@@ -1,0 +1,261 @@
+<html>
+	<head>
+		<% include ../_partials/head %>
+        <style>
+        .page-content {
+            padding-top: 3.125rem;
+            min-height: 100%;
+            height: 100%;
+        }
+        </style>
+	</head>
+	<body>
+		<% include ../_partials/header%>
+		<div class="page-content bg-white">
+            <div class="flex-grid no-responsive-future" style="height: 100%;">
+                <div class="row" style="height: 100%">
+                    <div class="cell auto-size padding20 bg-white" id="cell-content">
+                        <h1 class="text-light">Your Village : <%= user.village %></h1>
+                        <hr class="thin bg-grayLighter">
+                        <table class="dataTable border bordered" id="imarat-kar-rate" data-role="datatable" data-auto-width="false">
+                            <thead>
+                            <tr>
+                                <td class="sortable-column"></td>
+                                <td class="sortable-column bg-yellow">इमारतीचा प्रकार</td>
+                                <td class="sortable-column bg-yellow" style="width: 300px">ग्रामपंचायतीने ठरविलेले दर<br>(प्रती १००० भांडवली मूल्याप्रमाणे)</td>
+                                <td class="sortable-column bg-yellow" style="width: 300px">इमारतीच्या बांधकामानुसार रेअद्य रेकनर दर</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td class="bg-yellow">झोपडी व मातीचे घर</td>
+                                    <td><%= upkar.zopdi_per_thousand %></td>
+                                    <td><%= upkar.zopdi_reknar_dar %></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td class="bg-yellow">दगड किंवा विटा वापरलेली मातीची इमारत</td>
+                                    <td><%= upkar.vita_per_thousand %></td>
+                                    <td><%= upkar.vita_reknar_dar %></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td class="bg-yellow">दगड, विटाची व चुना किंवा सिमेंट वापरून उभारलेली इमारत</td>
+                                    <td><%= upkar.cement_per_thousand %></td>
+                                    <td><%= upkar.cement_reknar_dar %></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td class="bg-yellow">आर.सी.सी. पद्धतीचे घर</td>
+                                    <td><%= upkar.rcc_per_thousand %></td>
+                                    <td><%= upkar.rcc_reknar_dar %></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td class="bg-yellow">खुल्या जमिनीवरील कराचा दर</td>
+                                    <td><%= upkar.khulli_jamin_per_thousand %></td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr class="thin bg-grayLighter">
+                        <h2>वार्षिक मूल्य</h2>
+                        <form method="post" action="/add_varshik_mulya">
+                            <div class="input-control text">
+                                <label for="mulya_name">Name: </label>
+                                <input type="text" name="mulya_name" id="mulya_name">
+                            </div>
+                            <div class="input-control text">
+                                <label for="mulya_rate">Rate: </label>
+                                <input type="text" name="mulya_rate" id="mulya_rate">
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="button primary">वार्षिक मूल्य संपादित करा</button>
+                            </div>
+                        </form>
+                        <table class="dataTable border bordered" id="varshik-mulya-rate" data-role="datatable" data-auto-width="false">
+                            <thead>
+                            <tr>
+                                <td style="width: 100px">ID (For technical purposes)</td>
+                                <td class="sortable-column bg-yellow">जमिनीचा प्रकार</td>
+                                <td class="sortable-column bg-yellow" style="width: 300px">वार्षिक मूल्य दर (चौ/मीटर)</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <% upkar.varshik_mulya.forEach((mulya) => { %>
+                                    <tr>
+                                        <td><%= mulya._id %></td>
+                                        <td><%= mulya.name %></td>
+                                        <td><%= mulya.rate %></td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                        <hr class="thin bg-grayLighter">
+                        <h2>वीज कर</h2>
+                        <form method="post" action="/add_veej_kar">
+                            <div class="input-control text">
+                                <label for="veej_name">Name: </label>
+                                <input type="text" name="veej_name" id="veej_name">
+                            </div>
+                            <div class="input-control text">
+                                <label for="veej_rate">Rate: </label>
+                                <input type="text" name="veej_rate" id="veej_rate">
+                            </div>
+                            <div class="input-control text">
+                                <label for="veej_from_sqft">From SqFt: </label>
+                                <input type="text" name="veej_from_sqft" id="veej_from_sqft">
+                            </div>
+                            <div class="input-control text">
+                                <label for="veej_to_sqft">To SqFt: </label>
+                                <input type="text" name="veej_to_sqft" id="veej_to_sqft">
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="button primary">वीज कर संपादित करा</button>
+                            </div>
+                        </form>
+                        <table class="dataTable border bordered" id="veej-kar-rate" data-role="datatable" data-auto-width="false">
+                            <thead>
+                            <tr>
+                                <td class="sortable-column bg-yellow">कराचा प्रकार</td>
+                                <td class="sortable-column bg-yellow" style="width: 300px">पंचायतीने ठरविलेले दर</td>
+                                <td class="sortable-column bg-yellow" style="width: 300px">स्क्वेअर फुट पासून</td>
+                                <td class="sortable-column bg-yellow" style="width: 300px">स्क्वेअर फुट पर्यंत</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <% upkar.veej_kar.forEach((veejkar) => { %>
+                                    <tr>
+                                        <td><%= veejkar.name %></td>
+                                        <td><%= veejkar.rate %></td>
+                                        <td><%= veejkar.from_sqft %></td>
+                                        <td><%= veejkar.to_sqft %></td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                        <hr class="thin bg-grayLighter">
+                        <h2>आरोग्य कर</h2>
+                        <form method="post" action="/add_veej_kar">
+                            <div class="input-control text">
+                                <label for="aarogya_name">Name: </label>
+                                <input type="text" name="aarogya_name" id="aarogya_name">
+                            </div>
+                            <div class="input-control text">
+                                <label for="aarogya_rate">Rate: </label>
+                                <input type="text" name="aarogya_rate" id="aarogya_rate">
+                            </div>
+                            <div class="input-control text">
+                                <label for="aarogya_from_sqft">From SqFt: </label>
+                                <input type="text" name="aarogya_from_sqft" id="aarogya_from_sqft">
+                            </div>
+                            <div class="input-control text">
+                                <label for="aarogya_to_sqft">To SqFt: </label>
+                                <input type="text" name="aarogya_to_sqft" id="aarogya_to_sqft">
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="button primary">आरोग्य कर संपादित करा</button>
+                            </div>
+                        </form>
+                        <table class="dataTable border bordered" id="aarogya-kar-rate" data-role="datatable" data-auto-width="false">
+                            <thead>
+                            <tr>
+                                <td class="sortable-column bg-yellow">कराचा प्रकार</td>
+                                <td class="sortable-column bg-yellow" style="width: 300px">पंचायतीने ठरविलेले दर</td>
+                                <td class="sortable-column bg-yellow" style="width: 300px">स्क्वेअर फुट पासून</td>
+                                <td class="sortable-column bg-yellow" style="width: 300px">स्क्वेअर फुट पर्यंत</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <% upkar.aarogya_kar.forEach((kar) => { %>
+                                    <tr>
+                                        <td><%= kar.name %></td>
+                                        <td><%= kar.rate %></td>
+                                        <td><%= kar.from_sqft %></td>
+                                        <td><%= kar.to_sqft %></td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                        <hr class="thin bg-grayLighter">
+                        <h2>पाणीपट्टी</h2>
+                        <form method="post" action="/add_varshik_mulya">
+                            <div class="input-control text">
+                                <label for="panipatti_name">Name: </label>
+                                <input type="text" name="panipatti_name" id="panipatti_name">
+                            </div>
+                            <div class="input-control text">
+                                <label for="panipatti_rate">Rate: </label>
+                                <input type="text" name="panipatti_rate" id="panipatti_rate">
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="button primary">वार्षिक मूल्य संपादित करा</button>
+                            </div>
+                        </form>
+                        <table class="dataTable border bordered" id="panipatti-kar-rate" data-role="datatable" data-auto-width="false">
+                            <thead>
+                            <tr>
+                                <td class="sortable-column bg-yellow">जमिनीचा प्रकार</td>
+                                <td class="sortable-column bg-yellow" style="width: 300px">वार्षिक मूल्य दर (चौ/मीटर)</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <% upkar.panipatti.forEach((pani) => { %>
+                                    <tr>
+                                        <td><%= pani.name %></td>
+                                        <td><%= pani.rate %></td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                        <hr class="thin bg-grayLighter">
+                        <form method="post">
+                            <div class="input-control text">
+                                <label for="manora_rate">मनोर्य्च्या तळघराचा दर: </label>
+                                <input type="text" name="manora_rate" id="manora_rate">
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="button primary">मनोऱ्याच्या तळघराचा दर संपादित करा</button>
+                            </div>
+                        </form>
+                        <hr class="thin bg-grayLighter">
+                        <form method="post">
+                            <div class="input-control text">
+                                <label for="manora_khulla_rate">मनोर्य्च्या खुल्या जागेचा दर: </label>
+                                <input type="text" name="manora_khulla_rate" id="manora_khulla_rate">
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="button primary">मनोऱ्याच्या खुल्या जागेचा दर संपादित करा</button>
+                            </div>
+                        </form>
+                        <hr class="thin bg-grayLighter">
+                        <form method="post">
+                            <div class="input-control text">
+                                <label for="imarat_home_rate">घर: </label>
+                                <input type="text" name="imarat_home_rate" id="imarat_home_rate">
+                            </div>
+                            <div class="input-control text">
+                                <label for="imarat_sadnika_rate">सदनिका: </label>
+                                <input type="text" name="imarat_sadnika_rate" id="imarat_sadnika_rate">
+                            </div>
+                            <div class="input-control text">
+                                <label for="imarat_dukan_rate">दुकान: </label>
+                                <input type="text" name="imarat_dukan_rate" id="imarat_dukan_rate">
+                            </div>
+                            <div class="input-control text">
+                                <label for="imarat_itar_rate">इतर: </label>
+                                <input type="text" name="imarat_itar_rate" id="imarat_itar_rate">
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="button primary">मनोऱ्याच्या खुल्या जागेचा दर संपादित करा</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<% include ../_partials/footer%>
+        <script src="/javascripts/upkar.js"></script>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<% include ../_partials/head %>
+        <style>
+        .page-content {
+            padding-top: 3.125rem;
+            min-height: 100%;
+            height: 100%;
+        }
+        </style>
+	</head>
+	<body class="bg-steel">
+		<% include ../_partials/adminHeader%>
+		<div class="page-content">
+            <div class="flex-grid no-responsive-future" style="height: 100%;">
+                <div class="row" style="height: 100%">
+                    <div class="cell auto-size padding20 bg-white" id="cell-content">
+                        <form method="post">
+                            <div class="input-control text">
+                                <label for="id">ID: </label>
+                                <input type="text" name="id" id="id">
+                            </div>
+                            <div class="input-control text">
+                                <label for="username">Username: </label>
+                                <input type="text" name="username" id="username">
+                            </div>
+                            <div class="input-control text">
+                                <label for="password">Password: </label>
+                                <input type="password" name="password" id="password">
+                            </div>
+                            <div class="input-control text">
+                                <label for="village">Village: </label>
+                                <input type="text" name="village" id="village">
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="button primary">Add Village</button>
+                            </div>
+                        </form>
+                        <h1 class="text-light">Villages</h1>
+                        <hr class="thin bg-grayLighter">
+                        <table class="dataTable border bordered" id="villages-table" data-role="datatable" data-auto-width="false">
+                            <thead>
+                            <tr>
+                                <td class="sortable-column sort-asc" style="width: 100px">ID</td>
+                                <td class="sortable-column">Village</td>
+                                <td class="sortable-column">Username</td>
+                                <td class="sortable-column">Password</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                               <% villages.forEach((village) => { %>
+                                <tr>
+                                    <td><span id="editable-id-<%= village.id %>"><%= village.id %></span></td>
+                                    <td><span id="editable-village-<%= village.id %>"><%= village.village %></span></td>
+                                    <td><span id="editable-username-<%= village.id %>"><%= village.username %></span></td>
+                                    <td><span id="editable-password-<%= village.id %>"><%= village.password %></span></td>
+                                </tr>
+                                <% }) %>
+                             </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<% include ../_partials/footer%>
+        <script src="/javascripts/village.js"></script>
+	</body>
+</html>
