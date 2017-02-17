@@ -90,10 +90,50 @@ router.post('/add_varshik_mulya', isAuthenticated, (req, res) => {
 })
 
 router.post('/updateVarshikMulyaRate', isAuthenticated, (req, res) => {
-	console.log(req.body);
-	Upkar.findOne({ villageId: req.user.id }, (err, upkar) => {
-		console.log(upkar.varshik_mulya.id(req.body.id))
-	});
+	upkar_editor.deleteVarshikMulya(req.body);
+	res.redirect('/upkar');
+})
+
+router.post('/add_veej_kar', isAuthenticated, (req, res) => {
+	upkar_editor.addVeejKar(req.body);
+	res.redirect('/upkar');
+}) 
+
+router.post('/updateVeejKarRate', isAuthenticated, (req, res) => {
+	upkar_editor.deleteVeejKar(req.body);
+})
+
+router.post('/add_aarogya_kar', isAuthenticated, (req, res) => {
+	upkar_editor.addAarogyaKar(req.body);
+	res.redirect('/upkar');
+})
+
+router.post('/updateAarogyaKarRate', isAuthenticated, (req, res) => {
+	upkar_editor.deleteAarogyaKar(req.body);
+})
+
+router.post('/add_panipatti', isAuthenticated, (req, res) => {
+	upkar_editor.addPanipatti(req.body);
+	res.redirect('/upkar');
+})
+
+router.post('/updatePanipattiRate', isAuthenticated, (req, res) => {
+	upkar_editor.deletePanipatti(req.body);
+})
+
+router.post('/manora_talghar_rate_update', isAuthenticated, (req, res) => {
+	upkar_editor.talgharRateUpdate(req.body);
+	res.redirect('/upkar');
+})
+
+router.post('/manora_khulli_jaga_update', isAuthenticated, (req, res) => {
+	upkar_editor.khulliRateUpdate(req.body);
+	res.redirect('/upkar');
+})
+
+router.post('/update_imarat', isAuthenticated, (req, res) => {
+	upkar_editor.imaratRateUpdate(req.body);
+	res.redirect('/upkar');
 })
 
 module.exports = router;

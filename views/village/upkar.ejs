@@ -118,6 +118,7 @@
                         <table class="dataTable border bordered" id="veej-kar-rate" data-role="datatable" data-auto-width="false">
                             <thead>
                             <tr>
+                                <td>ID (For technical purposes)</td>
                                 <td class="sortable-column bg-yellow">कराचा प्रकार</td>
                                 <td class="sortable-column bg-yellow" style="width: 300px">पंचायतीने ठरविलेले दर</td>
                                 <td class="sortable-column bg-yellow" style="width: 300px">स्क्वेअर फुट पासून</td>
@@ -127,6 +128,7 @@
                             <tbody>
                                 <% upkar.veej_kar.forEach((veejkar) => { %>
                                     <tr>
+                                        <td><%= veejkar._id %></td>
                                         <td><%= veejkar.name %></td>
                                         <td><%= veejkar.rate %></td>
                                         <td><%= veejkar.from_sqft %></td>
@@ -137,7 +139,7 @@
                         </table>
                         <hr class="thin bg-grayLighter">
                         <h2>आरोग्य कर</h2>
-                        <form method="post" action="/add_veej_kar">
+                        <form method="post" action="/add_aarogya_kar">
                             <div class="input-control text">
                                 <label for="aarogya_name">Name: </label>
                                 <input type="text" name="aarogya_name" id="aarogya_name">
@@ -161,6 +163,7 @@
                         <table class="dataTable border bordered" id="aarogya-kar-rate" data-role="datatable" data-auto-width="false">
                             <thead>
                             <tr>
+                                <td>ID (For Technical Purposes)</td>
                                 <td class="sortable-column bg-yellow">कराचा प्रकार</td>
                                 <td class="sortable-column bg-yellow" style="width: 300px">पंचायतीने ठरविलेले दर</td>
                                 <td class="sortable-column bg-yellow" style="width: 300px">स्क्वेअर फुट पासून</td>
@@ -170,6 +173,7 @@
                             <tbody>
                                 <% upkar.aarogya_kar.forEach((kar) => { %>
                                     <tr>
+                                        <td><%= kar._id %></td>
                                         <td><%= kar.name %></td>
                                         <td><%= kar.rate %></td>
                                         <td><%= kar.from_sqft %></td>
@@ -180,7 +184,7 @@
                         </table>
                         <hr class="thin bg-grayLighter">
                         <h2>पाणीपट्टी</h2>
-                        <form method="post" action="/add_varshik_mulya">
+                        <form method="post" action="/add_panipatti">
                             <div class="input-control text">
                                 <label for="panipatti_name">Name: </label>
                                 <input type="text" name="panipatti_name" id="panipatti_name">
@@ -196,6 +200,7 @@
                         <table class="dataTable border bordered" id="panipatti-kar-rate" data-role="datatable" data-auto-width="false">
                             <thead>
                             <tr>
+                                <td>ID (For Technical Purposes)</td>
                                 <td class="sortable-column bg-yellow">जमिनीचा प्रकार</td>
                                 <td class="sortable-column bg-yellow" style="width: 300px">वार्षिक मूल्य दर (चौ/मीटर)</td>
                             </tr>
@@ -203,49 +208,50 @@
                             <tbody>
                                 <% upkar.panipatti.forEach((pani) => { %>
                                     <tr>
+                                        <td><%= pani._id %></td>
                                         <td><%= pani.name %></td>
                                         <td><%= pani.rate %></td>
                                     </tr>
                                 <% }) %>
                             </tbody>
                         </table>
-                        <hr class="thin bg-grayLighter">
-                        <form method="post">
+                        <hr class="thin bg-grayLighter"><br><br>
+                        <form method="post" action="/manora_talghar_rate_update">
                             <div class="input-control text">
-                                <label for="manora_rate">मनोर्य्च्या तळघराचा दर: </label>
-                                <input type="text" name="manora_rate" id="manora_rate">
+                                <label for="manora_rate">मनोऱ्याच्या तळघराचा दर: </label>
+                                <input type="text" name="manora_rate" id="manora_rate" value="<%= upkar.manora_talghar_rate %>">
                             </div>
                             <div class="form-actions">
                                 <button type="submit" class="button primary">मनोऱ्याच्या तळघराचा दर संपादित करा</button>
                             </div>
                         </form>
                         <hr class="thin bg-grayLighter">
-                        <form method="post">
+                        <form method="post" action="/manora_khulli_jaga_update">
                             <div class="input-control text">
-                                <label for="manora_khulla_rate">मनोर्य्च्या खुल्या जागेचा दर: </label>
-                                <input type="text" name="manora_khulla_rate" id="manora_khulla_rate">
+                                <label for="manora_khulla_rate">मनोऱ्याच्या खुल्या जागेचा दर: </label>
+                                <input type="text" name="manora_khulla_rate" id="manora_khulla_rate" value="<%= upkar.manora_khulli_jaga_normal_rate %>">
                             </div>
                             <div class="form-actions">
                                 <button type="submit" class="button primary">मनोऱ्याच्या खुल्या जागेचा दर संपादित करा</button>
                             </div>
                         </form>
                         <hr class="thin bg-grayLighter">
-                        <form method="post">
+                        <form method="post" action="/update_imarat">
                             <div class="input-control text">
                                 <label for="imarat_home_rate">घर: </label>
-                                <input type="text" name="imarat_home_rate" id="imarat_home_rate">
+                                <input type="text" name="imarat_home_rate" id="imarat_home_rate" value="<%= upkar.imarat.home_rate %>">
                             </div>
                             <div class="input-control text">
                                 <label for="imarat_sadnika_rate">सदनिका: </label>
-                                <input type="text" name="imarat_sadnika_rate" id="imarat_sadnika_rate">
+                                <input type="text" name="imarat_sadnika_rate" id="imarat_sadnika_rate" value="<%= upkar.imarat.sadnika %>">
                             </div>
                             <div class="input-control text">
                                 <label for="imarat_dukan_rate">दुकान: </label>
-                                <input type="text" name="imarat_dukan_rate" id="imarat_dukan_rate">
+                                <input type="text" name="imarat_dukan_rate" id="imarat_dukan_rate" value="<%= upkar.imarat.dukan %>">
                             </div>
                             <div class="input-control text">
                                 <label for="imarat_itar_rate">इतर: </label>
-                                <input type="text" name="imarat_itar_rate" id="imarat_itar_rate">
+                                <input type="text" name="imarat_itar_rate" id="imarat_itar_rate" value="<%= upkar.imarat.etar %>">
                             </div>
                             <div class="form-actions">
                                 <button type="submit" class="button primary">मनोऱ्याच्या खुल्या जागेचा दर संपादित करा</button>

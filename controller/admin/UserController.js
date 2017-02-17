@@ -23,7 +23,6 @@ exports.updateUser = (body) => {
 	console.log(body);
 	User.findOneAndUpdate({ id: body.id }, { $set: { username: body.username, password: body.password, village: body.village }}, function (err, tank) {
 		if (err) { console.log(err); return handleError(err) };
-		res.redirect('/admin/addUsers');
 	});
 	return true;
 }
