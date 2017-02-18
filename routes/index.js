@@ -6,6 +6,7 @@ var village = require('../controller/admin/UserController');
 var upkar_editor = require('../controller/UpkarController');
 var User = require('../models/User');
 var Upkar = require('../models/Upkar');
+var Wards = require('../models/Wards')
 var adminLoggedIn = require('connect-ensure-login').ensureLoggedIn({ redirectTo: '/admin/login' });
 
 var isAuthenticated = (req, res, next) => {
@@ -134,6 +135,32 @@ router.post('/manora_khulli_jaga_update', isAuthenticated, (req, res) => {
 router.post('/update_imarat', isAuthenticated, (req, res) => {
 	upkar_editor.imaratRateUpdate(req.body);
 	res.redirect('/upkar');
+})
+
+router.get('/wards', isAuthenticated, (req, res) => {
+	Wards.find({ villageId: req.user.id }, (err, wards) => {
+		if(err) return handleError(err);
+		res.render('village/wards', { user: req.user, wards: wards })
+	})
+})
+
+router.post('/wards', isAuthenticated, (req, res) => {
+	var w = new Wards();
+	w.villageId = req.user.id;
+	w.name = req.body.ward_name;
+	w.save(err => {
+		if(err) return handleError(err);
+		console.log("saved");
+	})
+	res.redirect('/wards');
+})
+
+router.post('/deleteWard', isAuthenticated, (req, res) => {
+	Wards.remove({ _id: req.body.type }, err => {
+		if(err) return handleError(err);
+		console.log("removed");
+	});
+	res.redirect('/wards');
 })
 
 module.exports = router;
