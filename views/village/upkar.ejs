@@ -77,7 +77,7 @@
                         <table class="dataTable border bordered" id="varshik-mulya-rate" data-role="datatable" data-auto-width="false">
                             <thead>
                             <tr>
-                                <td style="width: 100px">ID (For technical purposes)</td>
+                                <td style="display: none">ID (For technical purposes)</td>
                                 <td class="sortable-column bg-yellow">जमिनीचा प्रकार</td>
                                 <td class="sortable-column bg-yellow" style="width: 300px">वार्षिक मूल्य दर (चौ/मीटर)</td>
                             </tr>
@@ -85,7 +85,7 @@
                             <tbody>
                                 <% upkar.varshik_mulya.forEach((mulya) => { %>
                                     <tr>
-                                        <td><%= mulya._id %></td>
+                                        <td style="display: none"><%= mulya._id %></td>
                                         <td><%= mulya.name %></td>
                                         <td><%= mulya.rate %></td>
                                     </tr>
@@ -118,7 +118,7 @@
                         <table class="dataTable border bordered" id="veej-kar-rate" data-role="datatable" data-auto-width="false">
                             <thead>
                             <tr>
-                                <td>ID (For technical purposes)</td>
+                                <td style="display: none">ID (For technical purposes)</td>
                                 <td class="sortable-column bg-yellow">कराचा प्रकार</td>
                                 <td class="sortable-column bg-yellow" style="width: 300px">पंचायतीने ठरविलेले दर</td>
                                 <td class="sortable-column bg-yellow" style="width: 300px">स्क्वेअर फुट पासून</td>
@@ -128,7 +128,7 @@
                             <tbody>
                                 <% upkar.veej_kar.forEach((veejkar) => { %>
                                     <tr>
-                                        <td><%= veejkar._id %></td>
+                                        <td style="display: none"><%= veejkar._id %></td>
                                         <td><%= veejkar.name %></td>
                                         <td><%= veejkar.rate %></td>
                                         <td><%= veejkar.from_sqft %></td>
@@ -163,7 +163,7 @@
                         <table class="dataTable border bordered" id="aarogya-kar-rate" data-role="datatable" data-auto-width="false">
                             <thead>
                             <tr>
-                                <td>ID (For Technical Purposes)</td>
+                                <td style="display: none">ID (For Technical Purposes)</td>
                                 <td class="sortable-column bg-yellow">कराचा प्रकार</td>
                                 <td class="sortable-column bg-yellow" style="width: 300px">पंचायतीने ठरविलेले दर</td>
                                 <td class="sortable-column bg-yellow" style="width: 300px">स्क्वेअर फुट पासून</td>
@@ -173,7 +173,7 @@
                             <tbody>
                                 <% upkar.aarogya_kar.forEach((kar) => { %>
                                     <tr>
-                                        <td><%= kar._id %></td>
+                                        <td style="display: none"><%= kar._id %></td>
                                         <td><%= kar.name %></td>
                                         <td><%= kar.rate %></td>
                                         <td><%= kar.from_sqft %></td>
@@ -194,21 +194,21 @@
                                 <input type="text" name="panipatti_rate" id="panipatti_rate">
                             </div>
                             <div class="form-actions">
-                                <button type="submit" class="button primary">वार्षिक मूल्य संपादित करा</button>
+                                <button type="submit" class="button primary">पाणीपट्टी कर संपादित करा</button>
                             </div>
                         </form>
                         <table class="dataTable border bordered" id="panipatti-kar-rate" data-role="datatable" data-auto-width="false">
                             <thead>
                             <tr>
-                                <td>ID (For Technical Purposes)</td>
-                                <td class="sortable-column bg-yellow">जमिनीचा प्रकार</td>
-                                <td class="sortable-column bg-yellow" style="width: 300px">वार्षिक मूल्य दर (चौ/मीटर)</td>
+                                <td style="display: none">ID (For Technical Purposes)</td>
+                                <td class="sortable-column bg-yellow">पाणीपट्टी प्रकार</td>
+                                <td class="sortable-column bg-yellow" style="width: 300px">वार्षिक मूल्य दर</td>
                             </tr>
                             </thead>
                             <tbody>
                                 <% upkar.panipatti.forEach((pani) => { %>
                                     <tr>
-                                        <td><%= pani._id %></td>
+                                        <td style="display: none"><%= pani._id %></td>
                                         <td><%= pani.name %></td>
                                         <td><%= pani.rate %></td>
                                     </tr>

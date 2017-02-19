@@ -10,24 +10,25 @@
         </style>
     </head>
     <body class="bg-steel">
-        <% include ../_partials/adminHeader%>
+        <% include ../_partials/header%>
         <div class="page-content">
             <div class="flex-grid no-responsive-future" style="height: 100%;">
                 <div class="row" style="height: 100%">
                     <div class="cell auto-size padding20 bg-white" id="cell-content">
-                        <table class="dataTable border bordered" id="varshik-mulya-rate" data-role="datatable" data-auto-width="false">
+                        <table class="dataTable border bordered" id="citizens-table" data-role="datatable" data-auto-width="false">
                             <thead>
                             <tr>
-                                <td style="width: 100px">ID (For technical purposes)</td>
-                                <td class="sortable-column bg-yellow">जमिनीचा प्रकार</td>
-                                <td class="sortable-column bg-yellow" style="width: 300px">वार्षिक मूल्य दर (चौ/मीटर)</td>
+                                <td style="display: none">ID (For technical purposes)</td>
+                                <td class="sortable-column bg-yellow">नाव</td>
+                                <td class="sortable-column bg-yellow">पत्ता</td>
+                                <td class="sortable-column bg-yellow">वार्डचे नाव</td>
                             </tr>
                             </thead>
                             <tbody>
                                 <% citizens.forEach((citizen) => { %>
                                     <tr>
-                                        <td><%= citizen._id %></td>
-                                        <td><%= citizen.name %></td>
+                                        <td style="display: none"><%= citizen._id %></td>
+                                        <td><a href="/citizen/<%= citizen._id %>"><%= citizen.name %></a></td>
                                         <td><%= citizen.address %></td>
                                         <td><%= citizen.ward_name %></td>
                                     </tr>
@@ -39,5 +40,6 @@
             </div>
         </div>
         <% include ../_partials/footer%>
+        <script src="/javascripts/citizens.js"></script>
     </body>
 </html>

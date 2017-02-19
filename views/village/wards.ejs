@@ -29,14 +29,14 @@
                         <table class="dataTable border bordered" id="wards-table" data-role="datatable"  data-auto-width="false">
                             <thead>
                                 <tr>
-                                    <td style="width: 100px">ID (For technical purposes)</td>
-                                    <td class="sortable-column bg-yellow">जमिनीचा प्रकार</td>
+                                    <td style="display: none">ID (For technical purposes)</td>
+                                    <td class="sortable-column bg-yellow">वार्डचे नाव</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <% wards.forEach((ward) => { %>
                                     <tr>
-                                        <td><%= ward._id %></td>
+                                        <td style="display: none"><%= ward._id %></td>
                                         <td><%= ward.name %></td>
                                     </tr>
                                 <% }) %>

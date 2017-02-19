@@ -215,8 +215,19 @@ router.post('/entry', isAuthenticated, (req, res) => {
 
 router.get('/citizens', isAuthenticated, (req, res) => {
 	Citizen.find({ villageId: req.user.id }, (err, citizens) => {
-		res.return('village/citizens', { citizens: citizens });
+		res.render('village/citizens', { user: req.user, citizens: citizens });
 	});
 });
+
+router.post('/deleteCitizen', isAuthenticated, (req, res) => {
+	citizen_editor.deleteCitizen(req.body.type);
+	res.redirect('/citizens')
+})
+
+router.get('/citizen/:id', (req, res) => {
+	Citizen.findOne({ _id: req.params.id }, (err, citizen) => {
+		res.render('village/citizen_info', { user: req.user, citizen: citizen });
+	})
+})
 
 module.exports = router;

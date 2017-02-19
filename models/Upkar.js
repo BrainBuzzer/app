@@ -70,7 +70,7 @@ module.exports = mongoose.model('Upkar', new Schema({
     },
     zopdi_reknar_dar: {
         type: Number,
-        default: 0
+        default: 6300
     },
     vita_per_thousand: {
         type: Number,
@@ -78,7 +78,7 @@ module.exports = mongoose.model('Upkar', new Schema({
     },
     vita_reknar_dar: {
         type: Number,
-        default: 0
+        default: 8400
     },
     cement_per_thousand: {
         type: Number,
@@ -86,7 +86,7 @@ module.exports = mongoose.model('Upkar', new Schema({
     },
     cement_reknar_dar: {
         type: Number,
-        default: 0
+        default: 12600
     },
     rcc_per_thousand: {
         type: Number,
@@ -94,7 +94,7 @@ module.exports = mongoose.model('Upkar', new Schema({
     },
     rcc_reknar_dar: {
         type: Number,
-        default: 0
+        default: 14000
     },
     khulli_jamin_per_thousand: {
         type: Number,
