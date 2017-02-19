@@ -9,18 +9,22 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-    User.count({id: id}, (err, count) => {
-        if(count>0) {
-            User.findOne({id: id}, (err, user) => {
-                if(err) throw err;
+    User.count({
+        id: id
+    }, (err, count) => {
+        if (count > 0) {
+            User.findOne({
+                id: id
+            }, (err, user) => {
+                if (err) throw err;
                 done(null, user);
             })
         } else {
             db.users.findById(id, (err, user) => {
-                if(err) throw err;
+                if (err) throw err;
                 done(null, user);
             })
-        }    
+        }
     })
-    
+
 });

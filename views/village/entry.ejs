@@ -1,0 +1,416 @@
+<html>
+    <head>
+        <% include ../_partials/head %>
+        <style>
+        .page-content {
+        padding-top: 3.125rem;
+        min-height: 100%;
+        height: 100%;
+        }
+        </style>
+        <link rel="stylesheet" href="/stylesheets/parsley.css">
+    </head>
+    <body class="bg-white">
+        <% include ../_partials/header%>
+        <div class="container page-content">
+            <div class="grid">
+                <br>
+                <form method="post" data-parsley-validate>
+                    <div class="row cells2">
+                        <div class="cell">
+                            <div class="input-control select full-size disabled">
+                                <label for="year">वर्ष</label>
+                                <select name="year" id="year">
+                                    <option value="2016-2017">2016-2017</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="name">नाव</label>
+                                <span class="mif-user prepend-icon"></span>
+                                <input type="text" required name="name" id="name" data-parsley-required="true">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row cells2">
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="wife_name">बायकोचे नाव</label>
+                                <span class="prepend-icon mif-users"></span>
+                                <input type="text" required name="wife_name" id="wife_name" data-parsley-required="true">
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="cell_no">मोबाईल नंबर</label>
+                                <span class="prepend-icon mif-phone"></span>
+                                <input type="text" required name="cell_no" id="cell_no" data-parsley-type="number" data-parsley-trigger="change" data-parsley-minlength="10">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row cells">
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="address">पत्ता</label>
+                                <span class="prepend-icon mif-home"></span>
+                                <input type="text" required name="address" id="address" data-parsley-required="true">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row cells">
+                        <div class="cell">
+                            <b>मालमत्तेची माहिती</b>
+                        </div>
+                    </div>
+                    <div class="row cells12">
+                        <div class="cell colspan4">
+                            <div class="input-control text full-size">
+                                <label for="malmatta_no">मालमत्ता क्रमांक</label>
+                                <input type="text" required name="malmatta_no" id="malmatta_no" data-parsley-type="number" data-parsley-trigger="change" data-parsley-required="true">
+                            </div>
+                        </div>
+                        <div class="cell colspan4">
+                            <div class="input-control select full-size">
+                                <label for="malmatta_type">मालमत्ता प्रकार</label>
+                                <select name="malmatta_type" id="malmatta_type" data-parsley-required="true">
+                                    <% malmatta.forEach(type => {%>
+                                        <option value="<%= type.name %>"><%= type.name %></option>
+                                    <%})%>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cell colspan4">
+                            <div class="input-control select full-size">
+                                <label for="formula">सूत्र</label>
+                                <select name="formula" id="formula">
+                                    <option value="7a">७क</option>
+                                    <option value="7b">७ख</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row cells">
+                        <div class="cell">
+                            <div class="input-control full-size text">
+                                <label for="area">क्षेत्रफळ</label>
+                                <input type="text" required name="area" id="area" data-parsley-type="number" data-parsley-trigger="change">
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="thin">
+                    <div class="row cells">
+                        <div class="cell">
+                            <b>बांधकामाचे क्षेत्रफळ</b>
+                        </div>
+                    </div>
+                    <div class="row cells">
+                        <i><b>तळ मजला</b></i>
+                    </div>
+                    <div class="row cells12">
+                        <div class="cell colspan3">
+                            <div class="input-control full-size select">
+                                <label for="tal_type">तळघराचा प्रकार</label>
+                                <select name="tal_type" id="tal_type">
+                                    <option value="zopdi">झोपडी व मातीचे घर</option>
+                                    <option value="vita">दगड किंवा विटा वापरलेली मातीची इमारत</option>
+                                    <option value="cement">दगड, विटाची व चुना किंवा सिमेंट वापरून उभारलेली इमारत</option>
+                                    <option value="rcc">आर.सी.सी. पद्धतीचे घर</option>
+                                    <option value="khulli_jamin">खुलली जमीन</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cell colspan3">
+                            <div class="input-control full-size select">
+                                <label for="tal_use">तळघराचा वापर</label>
+                                <select name="tal_use" id="tal_use">
+                                    <option value="home">निवास</option>
+                                    <option value="dukan">दुकान</option>
+                                    <option value="itar">इतर</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cell colspan3">
+                            <div class="input-control full-size text">
+                                <label for="tal_year">वर्ष</label>
+                                <input type="text" required name="tal_year" id="tal_year" data-parsley-type="number" data-parsley-trigger="change" data-parsley-minlength="4">
+                            </div>
+                        </div>
+                        <div class="cell colspan3">
+                            <div class="input-control full-size text">
+                                <label for="tal_area">क्षेत्रफळ</label>
+                                <input type="text" required name="tal_area" id="tal_area" data-parsley-type="number" data-parsley-trigger="change">
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="thin">
+                    <div class="row cells">
+                        <div class="cell">
+                            <i><b>पहिला मजला</b></i><br>
+                        </div>
+                    </div>
+                    <div class="row cells">
+                        <div class="cell">
+                            <div class="input-control full-size select full-size">
+                                <label for="first_floor_yes_no">पहिला मजला आहे किंवा नाही</label>
+                                <select name="first_floor_yes_no" id="first_floor_yes_no">
+                                    <option value="yes">हो</option>
+                                    <option value="no">नाही</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row cells12">
+                        <div class="cell colspan3">
+                            <div class="input-control full-size select">
+                                <label for="first_floor_type">प्रकार</label>
+                                <select name="first_floor_type" id="first_floor_type">
+                                    <option value="zopdi">झोपडी व मातीचे घर</option>
+                                    <option value="vita">दगड किंवा विटा वापरलेली मातीची इमारत</option>
+                                    <option value="cement">दगड, विटाची व चुना किंवा सिमेंट वापरून उभारलेली इमारत</option>
+                                    <option value="rcc">आर.सी.सी. पद्धतीचे घर</option>
+                                    <option value="khulli_jamin">खुलली जमीन</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cell colspan3">
+                            <div class="input-control full-size select">
+                                <label for="first_floor_use">वापर</label>
+                                <select name="first_floor_use" id="first_floor_use">
+                                    <option value="home">निवास</option>
+                                    <option value="dukan">दुकान</option>
+                                    <option value="itar">इतर</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cell colspan3">
+                            <div class="input-control full-size text">
+                                <label for="first_floor_year">वर्ष</label>
+                                <input type="text" name="first_floor_year" id="first_floor_year" data-parsley-type="number" data-parsley-trigger="change" data-parsley-minlength="4" data-parsley-required="false">
+                            </div>
+                        </div>
+                        <div class="cell colspan3">
+                            <div class="input-control full-size text">
+                                <label for="first_floor_area">क्षेत्रफळ</label>
+                                <input type="text" name="first_floor_area" id="first_floor_area" data-parsley-type="number" data-parsley-trigger="change" data-parsley-required="false">
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="thin">
+                    <div class="row cells">
+                        <div class="cell">
+                            <i><b>दुसरा मजला</b></i>
+                        </div>
+                    </div>
+                    <div class="row cells">
+                        <div class="cell">
+                            <div class="input-control full-size select full-size">
+                                <label for="second_floor_yes_no">दुसरा मजला आहे किंवा नाही</label>
+                                <select name="second_floor_yes_no" id="second_floor_yes_no">
+                                    <option value="yes">हो</option>
+                                    <option value="no">नाही</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row cells12">
+                        <div class="cell colspan3">
+                            <div class="input-control full-size select">
+                                <label for="second_floor_type">प्रकार</label>
+                                <select name="second_floor_type" id="second_floor_type">
+                                    <option value="zopdi">झोपडी व मातीचे घर</option>
+                                    <option value="vita">दगड किंवा विटा वापरलेली मातीची इमारत</option>
+                                    <option value="cement">दगड, विटाची व चुना किंवा सिमेंट वापरून उभारलेली इमारत</option>
+                                    <option value="rcc">आर.सी.सी. पद्धतीचे घर</option>
+                                    <option value="khulli_jamin">खुलली जमीन</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cell colspan3">
+                            <div class="input-control full-size select">
+                                <label for="second_floor_use">वापर</label>
+                                <select name="second_floor_use" id="second_floor_use">
+                                    <option value="home">निवास</option>
+                                    <option value="dukan">दुकान</option>
+                                    <option value="itar">इतर</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cell colspan3">
+                            <div class="input-control full-size text">
+                                <label for="second_floor_year">वर्ष</label>
+                                <input type="text" name="second_floor_year" id="second_floor_year" data-parsley-type="number" data-parsley-trigger="change" data-parsley-minlength="4" data-parsley-required="false">
+                            </div>
+                        </div>
+                        <div class="cell colspan3">
+                            <div class="input-control full-size text">
+                                <label for="second_floor_area">क्षेत्रफळ</label>
+                                <input type="text" name="second_floor_area" id="second_floor_area" data-parsley-type="number" data-parsley-trigger="change" data-parsley-required="false">
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="thin"><br>
+                    <div class="row cells2">
+                        <div class="cell">
+                            <div class="input-control full-size select">
+                                <label for="land_type">जमिनीचा प्रकार</label>
+                                <select name="land_type" id="land_type">
+                                    <% malmatta.forEach(a => {%>
+                                        <option value="<%= a.name %>"><%= a.name %></option>
+                                    <%})%>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control full-size select">
+                                <label for="ward_type">वार्ड</label>
+                                <select name="ward_type" id="ward_type">
+                                    <% wards.forEach(ward => {%>
+                                        <option value="<%= ward.name %>"><%= ward.name %></option>
+                                    <%})%>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row cells3">
+                        <div class="cell">
+                            <div class="input-control full-size text">
+                                <label for="payee_name">भोगवटदाराचे नाव</label>
+                                <input type="text" required name="payee_name" id="payee_name" value="स्वतः">
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control full-size text">
+                                <label for="home_number">घर नंबर</label>
+                                <input type="text" name="home_number" id="home_number" data-parsley-type="number" data-parsley-trigger="change">
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control full-size text">
+                                <label for="survey_number">सर्वे नंबर</label>
+                                <input type="text" name="survey_number" id="survey_number" data-parsley-type="number" data-parsley-trigger="change">
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="row cells">
+                        मागील बाकी
+                    </div>
+                    <div class="row cells4">
+                        <div class="cell">
+                            <div class="input-control full-size text">
+                                <label for="previous_gharpatti">मागील घरपट्टी</label>
+                                <input type="text" name="previous_gharpatti" id="previous_gharpatti" data-parsley-type="number" data-parsley-trigger="change">
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control full-size text">
+                                <label for="previous_veej">मागील वीज</label>
+                                <input type="text" name="previous_veej" id="previous_veej" data-parsley-type="number" data-parsley-trigger="change">
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control full-size text">
+                                <label for="previous_aarogya">मागील आरोग्य</label>
+                                <input type="text" name="previous_aarogya" id="previous_aarogya" data-parsley-type="number" data-parsley-trigger="change">
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control full-size text">
+                                <label for="previous_panipatti">मागील पाणीपट्टी</label>
+                                <input type="text" name="previous_panipatti" id="previous_panipatti" data-parsley-type="number" data-parsley-trigger="change">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row cells">
+                        <div class="cell">
+                            <b>चतुर्सिमा</b>
+                        </div>
+                    </div>
+                    <div class="row cells5">
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="east">पूर्व</label>
+                                <input type="text" name="east" id="east" data-validation="required">
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="west">पश्चिम</label>
+                                <input type="text" name="west" id="west" data-validation="required">
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="south">दक्षिण</label>
+                                <input type="text" name="south" id="south" data-validation="required">
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="north">उत्तर</label>
+                                <input type="text" name="north" id="north" data-validation="required">
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control select full-size">
+                                <label for="door">दरवाजा</label>
+                                <select name="door" id="door">
+                                    <option value="east">पूर्व</option>
+                                    <option value="west">पश्चिम</option>
+                                    <option value="south">दक्षिण</option>
+                                    <option value="north">उत्तर</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div><br>
+                    <div class="row cells">
+                        <b>कराची माहिती</b>
+                    </div>
+                    <div class="row cells">
+                        <div class="cell">
+                            <div class="input-control full-size select">
+                                <label for="panipatti_type">पाणीपट्टी प्रकार</label>
+                                <select name="panipatti_type" id="panipatti_type">
+                                    <% panipatti.forEach(pani => { %>
+                                        <option value="<%= pani.name %>"><%= pani.name %></option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row cells2">
+                        <div class="cell">
+                            <div class="input-control full-size select">
+                                <label for="five_percent_off">५% सूट</label>
+                                <select name="five_percent_off" id="five_percent_off">
+                                    <option value="yes">हो</option>
+                                    <option value="no">नाही</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control full-size select">
+                                <label for="five_percent_extra">५% दंड</label>
+                                <select name="five_percent_extra" id="five_percent_extra">
+                                    <option value="yes">हो</option>
+                                    <option value="no">नाही</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row cells3">
+                        <div class="cell"></div>
+                        <div class="cell">
+                            <div class="form-actions">
+                                <button type="submit" class="button primary full-size">संपादित करा</button>
+                            </div>
+                        </div>
+                        <div class="cell"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <% include ../_partials/footer%>
+        <script src="/javascripts/parsley.min.js"></script>
+    </body>
+</html>

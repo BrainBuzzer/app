@@ -140,3 +140,42 @@ $('#aarogya-kar-rate').Tabledit({
     }
 
 });
+
+$('#panipatti-kar-rate').Tabledit({
+    url: '/updatePanipattiRate',
+    columns: {
+        identifier: [0, 'type'],
+        editable: []
+    },
+    inputClass: 'input-control text',
+    dangerClass: 'bg-red',
+    warningClass: 'bg-yellow',
+    editButton: false,
+    restoreButton: false,
+    buttons: {
+        edit: {
+            class: 'button',
+            html: '<span class="mif-pencil"></span>',
+            action: 'edit'
+        },
+        delete: {
+            class: 'button',
+            html: '<span class="mif-bin"></span>',
+            action: 'delete'
+        },
+        save: {
+            class: 'button success',
+            html: 'Save'
+        },
+        restore: {
+            class: 'button warning',
+            html: 'Restore',
+            action: 'restore'
+        },
+        confirm: {
+            class: 'button danger',
+            html: 'Confirm'
+        }
+    }
+
+});
