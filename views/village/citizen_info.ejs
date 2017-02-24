@@ -13,15 +13,6 @@
 		<% include ../_partials/header%>
 		<div class="container page-content">
             <div class="grid">
-                <div class="row cells">
-                    <div class="cell">
-                        <div class="toolbar">
-                            <div class="toolbar-options">
-                                <a class="mif-pencil toolbar-button place-right"></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="row cells3">
                     <div class="cell">
                         <h3>नाव: <%= citizen.name %></h3>
@@ -38,73 +29,35 @@
                         <h3>पत्ता: <%= citizen.address %></h3>
                     </div>
                 </div>
-                <hr class="thin">
-                <div class="row cells3">
-                    <div class="cell"><b>मालमत्ता नंबर</b>: <%= citizen.malmatta_number %></div>
-                    <div class="cell"><b>मालमत्तेचा प्रकार</b>: <%= citizen.malmatta_type %></div>
-                    <div class="cell"><b>क्षेत्रफळ</b>: <%= citizen.area %></div>
+                <div class="row">
+                    <a href="/citizen/<%= citizen._id %>/addMalmatta" class="primary button">नवीन मालमत्ता</a>
+                    <a href="/citizen/<%= citizen._id %>/kar" class="primary button">कर आकारा</a>
+                    <a href="/citizen/<%= citizen._id %>/eight" class="primary button">नमुना ८</a>
+                    <a href="/citizen/<%= citizen._id %>/nine" class="primary button">नमुना ९</a>
+                    <a href="/citizen/<%= citizen._id %>/nine_k" class="primary button">नमुना ९ (क)</a>
                 </div>
-                <hr class="thin">
-                <div class="row"><b>तळघर</b></div>
-                <div class="row cells4">
-                    <div class="cell"><b>वापर</b>: <%= citizen.majla_tal_use %></div>
-                    <div class="cell"><b>वर्ष</b>: <%= citizen.majla_tal_year %></div>
-                    <div class="cell"><b>प्रकार</b>: <%= citizen.majla_tal_type %></div>
-                    <div class="cell"><b>क्षेत्रफळ</b>: <%= citizen.majla_tal_area %></div>
-                </div>
-                <hr class="thin">
-                <% if(citizen.majla_first_area != '' || citizen.majla_first_area != null) { %>
-                    <div class="row"><b>पहिला मजला</b></div>
-                    <div class="row cells4">
-                        <div class="cell"><b>वापर</b>: <%= citizen.majla_first_use %></div>
-                        <div class="cell"><b>वर्ष</b>: <%= citizen.majla_first_year %></div>
-                        <div class="cell"><b>प्रकार</b>: <%= citizen.majla_first_type %></div>
-                        <div class="cell"><b>क्षेत्रफळ</b>: <%= citizen.majla_first_area %></div>
+                <div class="row">
+                        <form action="/citizen/<%= citizen._id %>/ten" method="post">
+                            <div class="input-control select">
+                                <label for="malmatta_id">मालमत्ता क्रमांक: </label>
+                                <select name="malmatta_id">
+                                    <option value="0">1</option>
+                                    <option value="1">2</option>
+                                    <option value="2">3</option>
+                                    <option value="3">4</option>
+                                    <option value="4">5</option>
+                                    <option value="5">6</option>
+                                    <option value="6">7</option>
+                                    <option value="7">8</option>
+                                    <option value="8">9</option>
+                                    <option value="9">10</option>
+                                </select>
+                            </div>
+                            <div class="form-actions">
+                                <button class="primary button" type="submit">नमुना १०</button>
+                            </div>
+                        </form>
                     </div>
-                    <hr class="thin">
-                <% } %>
-                <% if(citizen.majla_second_area != '' || citizen.majla_second_area != null) { %>
-                    <div class="row"><b>दुसरा मजला</b></div>
-                    <div class="row cells4">
-                        <div class="cell"><b>वापर</b>: <%= citizen.majla_second_use %></div>
-                        <div class="cell"><b>वर्ष</b>: <%= citizen.majla_second_year %></div>
-                        <div class="cell"><b>प्रकार</b>: <%= citizen.majla_second_type %></div>
-                        <div class="cell"><b>क्षेत्रफळ</b>: <%= citizen.majla_second_area %></div>
-                    </div>
-                    <hr class="thin">
-                <% } %>
-                <div class="row cells2">
-                    <div class="cell"><b>जमिनीचा प्रकार</b>: <%= citizen.land_type %></div>
-                    <div class="cell"><b>वार्डचे नाव</b>: <%= citizen.ward_name %></div>
-                </div>
-                <hr class="thin">
-                <div class="row cells3">
-                    <div class="cell"><b>भोगवटदाराचे नाव</b>: <%= citizen.payee_name %></div>
-                    <div class="cell"><b>घर नंबर</b>: <%= citizen.home_number %></div>
-                    <div class="cell"><b>सर्वे नंबर</b>: <%= citizen.survey_number %></div>
-                </div>
-                <hr class="thin">
-                <div class="row cells4">
-                    <div class="cell"><b>मागील घरपट्टी</b>: <%= citizen.previous_gharpatti %></div>
-                    <div class="cell"><b>मागील वीजपट्टी</b>: <%= citizen.previous_veej %></div>
-                    <div class="cell"><b>मागील आरोग्य कर</b>: <%= citizen.previous_aarogya %></div>
-                    <div class="cell"><b>मागील पाणीपट्टी</b>: <%= citizen.previous_panipatti %></div>
-                </div>
-                <hr class="thin">
-                <div class="row cells">
-                    <div class="cell"><b>चतुर्सिमा</b></div>
-                </div>
-                <div class="row cells5">
-                    <div class="cell"><b>पूर्व</b>: <%= citizen.east %></div>
-                    <div class="cell"><b>पश्चिम</b>: <%= citizen.west %></div>
-                    <div class="cell"><b>दक्षिण</b>: <%= citizen.south %></div>
-                    <div class="cell"><b>उत्तर</b>: <%= citizen.north %></div>
-                    <div class="cell"><b>दरवाजा</b>: <%= citizen.door %></div>
-                </div>
-                <hr class="thin">
-                <div class="row cells">
-                    <div class="row"><b>पाणीपट्टी कर प्रकार</b>: <%= citizen.panipatti_kar_type %></div>
-                </div>
             </div>
         </div>
 		<% include ../_partials/footer%>

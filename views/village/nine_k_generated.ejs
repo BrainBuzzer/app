@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<% include ../_partials/head %>
+		<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+		<style>
+			body {
+				font-family: 'Noto Sans', sans-serif;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="align-center">
+			<h2>नमुना ९ (क)</h2>
+			<h3>करांची मागणी पावती</h3>
+			<h4>ग्रामपंचायत: <%= user.village %>&nbsp;&nbsp;दिनांक: <%= date %></h4>
+			<h4>श्री. <%= malmatta.payee_name %></h4>
+			<h4>घर क्रमांक <%= malmatta.home_number %> यांजकडून पुढील करांची रक्कम वसुलीयोग्य आहे.</h4>
+		</div>
+		<div class="align-center">
+			<table class="table border bordered">
+				<thead>
+					<td>कराचे नाव</td>
+					<td colspan="3">वसुली पात्र रकमा</td>
+				</thead>
+				<tbody>
+					<tr>
+						<td></td>
+						<td>थकबाकी</td>
+						<td>चालू</td>
+						<td>एकूण</td>
+					</tr>
+					<tr>
+						<td><b>१. घरपट्टी</b></td>
+						<td><%= malmatta.previous_gharpatti %></td>
+						<td><%= malmatta.current_gharpatti %></td>
+						<td><%= parseInt(malmatta.current_gharpatti)+parseInt(malmatta.previous_gharpatti) %></td>
+					</tr>
+					<tr>
+						<td><b>२. पाणीपट्टी</b></td>
+						<td><%= malmatta.previous_panipatti %></td>
+						<td><%= malmatta.current_panipatti %></td>
+						<td><%= parseInt(malmatta.current_panipatti)+parseInt(malmatta.previous_panipatti) %></td>
+					</tr>
+					<tr>
+						<td><b>३. दिवाबत्ती कर</b></td>
+						<td><%= malmatta.previous_veej %></td>
+						<td><%= malmatta.current_veej %></td>
+						<td><%= parseInt(malmatta.current_veej)+parseInt(malmatta.previous_veej) %></td>
+					</tr>
+					<tr>
+						<td><b>४. आरोग्य कर</b></td>
+						<td><%= malmatta.previous_aarogya %></td>
+						<td><%= malmatta.current_aarogya %></td>
+						<td><%= parseInt(malmatta.current_aarogya)+parseInt(malmatta.previous_aarogya) %></td>
+					</tr>
+					<tr>
+						<td><b>एकूण</b></td>
+						<td><%= parseInt(malmatta.previous_gharpatti)+parseInt(malmatta.previous_panipatti)+parseInt(malmatta.previous_veej)+parseInt(malmatta.previous_aarogya) %></td>
+						<td><%= parseInt(malmatta.current_gharpatti)+parseInt(malmatta.current_panipatti)+parseInt(malmatta.current_veej)+parseInt(malmatta.current_aarogya) %></td>
+						<td><%= parseInt(malmatta.previous_gharpatti)+parseInt(malmatta.previous_panipatti)+parseInt(malmatta.previous_veej)+parseInt(malmatta.previous_aarogya)+parseInt(malmatta.current_gharpatti)+parseInt(malmatta.current_panipatti)+parseInt(malmatta.current_veej)+parseInt(malmatta.current_aarogya) %></td>
+					</tr>
+				</tbody>
+			</table>
+			<br><br><br><br><br>
+			<div class="row">
+				<div class="align-left">
+					दिनांक: <%= date %>
+				</div>
+				<div class="align-right">
+					सचिव / वसुली लिपिकाची स्वाक्षरी
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<h5>
+				<div class="fg-red">नोट: हे बील आपणास प्राप्त झाल्यापासून देय रकमांचा भरणा १५ दिवसांच्या आत करावा. अन्यथा ग्रामपंचायत अधिनियमाच्या कलम १२९ (२) अन्वये आपल्यावर मागणी बजावण्यात येईल. 	</div>
+			</h5>
+		</div>
+	</body>
+</html>

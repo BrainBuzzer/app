@@ -17,55 +17,6 @@
             <div class="grid">
                 <br>
                 <form method="post" id="form" data-parsley-validate>
-                    <div class="row">
-                        <div class="input-control select full-size">
-                            <label for="srno">अनुक्रमांक</label>
-                            <input type="number" name="srno">
-                        </div>
-                    </div>
-
-                    <div class="row cells2">
-                        <div class="cell">
-                            <div class="input-control select full-size disabled">
-                                <label for="year">वर्ष</label>
-                                <select name="year" id="year">
-                                    <option value="2016-2017">2016-2017</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="cell">
-                            <div class="input-control text full-size">
-                                <label for="name">नाव</label>
-                                <span class="mif-user prepend-icon"></span>
-                                <input type="text" required name="name" id="name" data-parsley-required="true" v-model="name">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row cells2">
-                        <div class="cell">
-                            <div class="input-control text full-size">
-                                <label for="wife_name">बायकोचे नाव</label>
-                                <span class="prepend-icon mif-users"></span>
-                                <input type="text" required name="wife_name" id="wife_name" data-parsley-required="true">
-                            </div>
-                        </div>
-                        <div class="cell">
-                            <div class="input-control text full-size">
-                                <label for="cell_no">मोबाईल नंबर</label>
-                                <span class="prepend-icon mif-phone"></span>
-                                <input type="text" required name="cell_no" id="cell_no" data-parsley-type="number" data-parsley-trigger="change" data-parsley-minlength="10">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row cells">
-                        <div class="cell">
-                            <div class="input-control text full-size">
-                                <label for="address">पत्ता</label>
-                                <span class="prepend-icon mif-home"></span>
-                                <input type="text" required name="address" id="address" data-parsley-required="true">
-                            </div>
-                        </div>
-                    </div>
                     <div class="row cells">
                         <div class="cell">
                             <b>मालमत्तेची माहिती</b>
@@ -622,7 +573,7 @@
                         <div class="cell">
                             <div class="input-control full-size text">
                                 <label for="payee_name">भोगवटदाराचे नाव</label>
-                                <input type="text" required name="payee_name" id="payee_name" v-bind:value="name">
+                                <input type="text" required name="payee_name" id="payee_name" value="स्वतः">
                             </div>
                         </div>
                         <div class="cell">

@@ -1,0 +1,189 @@
+<html>
+	<head>
+		<% include ../_partials/head %>
+        <style>
+        .page-content {
+            min-height: 100%;
+            height: 100%;
+        }
+        </style>
+	</head>
+	<body>
+		<div class="page-content">
+            <center>
+                <h1>नमुना ९ कर मागणी नोंदवही</h1><br>
+                <h3>सन २०१६-२०१७ या वर्षासाठी कर आकारणी नोंदवही</h3><br>
+                <h3>ग्रामपंचायत: <%= user.village %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;प्रभाग: <%= citizen.malmatta[0].ward_name %></h3>
+            </center><br>
+            <table class="table border bordered">
+                <thead>
+                    <td>मिळकत क्रमांक</td>
+                    <td>मिळकतीचे नाव</td>
+                    <td>ज्या व्यक्तीकडून कर येणे असेल त्या व्यक्तीचे नाव</td>
+                    <td colspan="12">मागणी</td>
+                    <td>एकूण मागणी</td>
+                    <td>पावती क्रमांक व तारीख</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2"></td>
+                        <td rowspan="2"></td>
+                        <td rowspan="2"></td>
+                        <td colspan="3"><b>घरपट्टी</b></td>
+                        <td colspan="3"><b>पाणीपट्टी</b></td>
+                        <td colspan="3"><b>वीजपट्टी</b></td>
+                        <td colspan="3"><b>आरोग्य</b></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><b>थकबाकी</b></td>
+                        <td><b>चालू</b></td>
+                        <td><b>एकूण</b></td>
+                        <td><b>थकबाकी</b></td>
+                        <td><b>चालू</b></td>
+                        <td><b>एकूण</b></td>
+                        <td><b>थकबाकी</b></td>
+                        <td><b>चालू</b></td>
+                        <td><b>एकूण</b></td>
+                        <td><b>थकबाकी</b></td>
+                        <td><b>चालू</b></td>
+                        <td><b>एकूण</b></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <% var executed = false %>
+                    <% var total_gharpatti = 0, total_panipatti =0, total_veej=0, total_aarogya=0, total_column=0, total_current_gharpatti=0, total_current_panipatti=0, total_current_veej=0, total_current_aarogya=0, total_previous_gharpatti=0, total_previous_panipatti=0, total_previous_veej=0, total_previous_aarogya=0 %>
+                    <% citizen.malmatta.forEach(m => {%>
+                    <tr>
+                        <!-- Pre Calculations -->
+                        <% total_column = parseInt(m.previous_gharpatti) + parseInt(m.current_gharpatti) + parseInt(m.current_panipatti) + parseInt(m.previous_panipatti) + parseInt(m.current_veej) + parseInt(m.previous_veej) + parseInt(m.current_aarogya) + parseInt(m.previous_aarogya) %>
+                        <!-- Table -->
+                        <td><%= m.malmatta_number %></td>
+                        <td><%= m.malmatta_type %></td>
+                        <td><%= m.payee_name %></td>
+                        <td><%= m.previous_gharpatti %></td>
+                        <td><%= m.current_gharpatti %></td>
+                        <td><%= parseInt(m.current_gharpatti)+parseInt(m.previous_gharpatti) %></td>
+                        <td><%= m.previous_panipatti %></td>
+                        <td><%= m.current_panipatti %></td>
+                        <td><%= parseInt(m.current_panipatti)+parseInt(m.previous_panipatti) %></td>
+                        <td><%= m.previous_veej %></td>
+                        <td><%= m.current_veej %></td>
+                        <td><%= parseInt(m.current_veej)+parseInt(m.previous_veej) %></td>
+                        <td><%= m.previous_aarogya %></td>
+                        <td><%= m.current_aarogya %></td>
+                        <td><%= parseInt(m.current_aarogya)+parseInt(m.previous_aarogya) %></td>
+                        <td><b><%= total_column %></b></td>
+                        <% if(!executed) { %>
+                            <td rowspan="<%= citizen.malmatta.length%>"><%= date %></td>
+                            <% executed=true%>
+                        <% } %>
+                        <!-- Calculations -->
+                        <% total_previous_gharpatti += parseInt(m.previous_gharpatti) %>
+                        <% total_previous_panipatti += parseInt(m.previous_panipatti) %>
+                        <% total_previous_veej += parseInt(m.previous_veej) %>
+                        <% total_previous_aarogya += parseInt(m.previous_aarogya) %>
+                        <% total_current_gharpatti += parseInt(m.current_gharpatti) %>
+                        <% total_current_panipatti += parseInt(m.current_panipatti) %>
+                        <% total_current_veej += parseInt(m.current_veej) %>
+                        <% total_current_aarogya += parseInt(m.current_aarogya) %>
+                        <% total_aarogya += parseInt(m.current_aarogya)+parseInt(m.previous_aarogya) %>
+                        <% total_veej += parseInt(m.current_veej)+parseInt(m.previous_veej) %>
+                        <% total_panipatti += parseInt(m.current_panipatti)+parseInt(m.previous_panipatti) %>
+                        <% total_gharpatti += parseInt(m.current_gharpatti)+parseInt(m.previous_gharpatti) %>
+                    </tr>
+                    <% total = total_gharpatti+total_panipatti+total_aarogya+total_veej %>
+                    <% }) %>
+                    <tr>
+                        <td colspan="3"><b>एकूण:</b> </td>
+                        <td><%= total_previous_gharpatti %></td>
+                        <td><%= total_current_gharpatti %></td>
+                        <td><b><%= total_gharpatti %></b></td>
+                        <td><%= total_previous_panipatti %></td>
+                        <td><%= total_current_panipatti %></td>
+                        <td><b><%= total_panipatti %></b></td>
+                        <td><%= total_previous_veej %></td>
+                        <td><%= total_current_veej %></td>
+                        <td><b><%= total_veej %></b></td>
+                        <td><%= total_previous_aarogya %></td>
+                        <td><%= total_current_aarogya %></td>
+                        <td><b><%= total_aarogya %></b></td>
+                        <td><b><%= total %></b></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <table class="table border bordered">
+                <thead>
+                    <td colspan="12">वसुली</td>
+                    <td colspan="5">सूट</td>
+                    <td colspan="5">बाकी</td>
+                    <td>सूट मंजुर करणाऱ्या आदेशांसह शेरा</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="3"><b>घरपट्टी</b></td>
+                        <td colspan="3"><b>पाणीपट्टी</b></td>
+                        <td colspan="3"><b>वीजपट्टी</b></td>
+                        <td colspan="3"><b>आरोग्य</b></td>
+                        <td rowspan="2"><b>कर</b></td>
+                        <td rowspan="2"><b>कर</b></td>
+                        <td rowspan="2"><b>कर</b></td>
+                        <td rowspan="2"><b>कर</b></td>
+                        <td rowspan="2"><b>एकूण</b></td>
+                        <td rowspan="2"><b>कर</b></td>
+                        <td rowspan="2"><b>कर</b></td>
+                        <td rowspan="2"><b>कर</b></td>
+                        <td rowspan="2"><b>कर</b></td>
+                        <td rowspan="2"><b>एकूण</b></td>
+                        <td rowspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td><b>थकबाकी</b></td>
+                        <td><b>चालू</b></td>
+                        <td><b>एकूण</b></td>
+                        <td><b>थकबाकी</b></td>
+                        <td><b>चालू</b></td>
+                        <td><b>एकूण</b></td>
+                        <td><b>थकबाकी</b></td>
+                        <td><b>चालू</b></td>
+                        <td><b>एकूण</b></td>
+                        <td><b>थकबाकी</b></td>
+                        <td><b>चालू</b></td>
+                        <td><b>एकूण</b></td>
+                    </tr>
+                    <% citizen.malmatta.forEach(kar => { %>
+                        <tr>
+                            <td><%= kar.previous_paid_gharpatti %></td>
+                            <td><%= kar.current_paid_gharpatti %></td>
+                            <td><%= parseInt(kar.previous_paid_gharpatti)+parseInt(kar.current_paid_gharpatti) %></td>
+                            <td><%= kar.previous_paid_panipatti %></td>
+                            <td><%= kar.current_paid_panipatti %></td>
+                            <td><%= parseInt(kar.previous_paid_panipatti)+parseInt(kar.current_paid_panipatti) %></td>
+                            <td><%= kar.previous_paid_veej %></td>
+                            <td><%= kar.current_paid_veej %></td>
+                            <td><%= parseInt(kar.previous_paid_veej)+parseInt(kar.current_paid_veej) %></td>
+                            <td><%= kar.previous_paid_aarogya %></td>
+                            <td><%= kar.current_paid_aarogya %></td>
+                            <td><%= parseInt(kar.previous_paid_aarogya)+parseInt(kar.current_paid_aarogya) %></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+		<% include ../_partials/footer%>
+	</body>
+</html>

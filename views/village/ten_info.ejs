@@ -1,0 +1,101 @@
+<html>
+	<head>
+		<% include ../_partials/head %>
+        <style>
+        .page-content {
+            padding-top: 3.125rem;
+            min-height: 100%;
+            height: 100%;
+        }
+        </style>
+	</head>
+	<body>
+		<% include ../_partials/header%>
+		<div class="container page-content">
+            <div class="grid">
+                <form method="post" action="/citizen/<%= id %>/ten_paavati">
+                    <input type="hidden" name="malmatta_id" value="<%= malmatta._id %>">
+                    <input type="hidden" name="m_id" value="<%= body.malmatta_id %>">
+                    <div class="row">
+                        <h3>घरपट्टी</h3>
+                    </div>
+                    <div class="row cells2">
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="previous_paid_gharpatti">थकबाकी पैकी भरलेली रक्कम</label>
+                                <input type="number" name="previous_paid_gharpatti" value="<%= malmatta.previous_paid_gharpatti %>">
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="current_paid_gharpatti">चालू पैकी भरलेली रक्कम</label>
+                                <input type="number" name="current_paid_gharpatti" value="<%= malmatta.current_paid_gharpatti %>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h3>पाणीपट्टी</h3>
+                    </div>
+                    <div class="row cells2">
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="previous_paid_panipatti">थकबाकी पैकी भरलेली रक्कम</label>
+                                <input type="number" name="previous_paid_panipatti" value="<%= malmatta.previous_paid_panipatti %>">
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="current_paid_panipatti">चालू पैकी भरलेली रक्कम</label>
+                                <input type="number" name="current_paid_panipatti" value="<%= malmatta.current_paid_panipatti %>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h3>दिवाबत्ती / वीज कर</h3>
+                    </div>
+                    <div class="row cells2">
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="previous_paid_veej">थकबाकी पैकी भरलेली रक्कम</label>
+                                <input type="number" name="previous_paid_veej" value="<%= malmatta.previous_paid_veej %>">
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="current_paid_veej">चालू पैकी भरलेली रक्कम</label>
+                                <input type="number" name="current_paid_veej" value="<%= malmatta.current_paid_veej %>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h3>आरोग्य</h3>
+                    </div>
+                    <div class="row cells2">
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="previous_paid_aarogya">थकबाकी पैकी भरलेली रक्कम</label>
+                                <input type="number" name="previous_paid_aarogya" value="<%= malmatta.previous_paid_aarogya %>">
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="current_paid_aarogya">चालू पैकी भरलेली रक्कम</label>
+                                <input type="number" name="current_paid_aarogya" value="<%= malmatta.current_paid_aarogya %>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row cells3">
+                        <div class="cell"></div>
+                        <div class="cell">
+                            <div class="form-action">
+                                <button type="submit" class="primary button full-size">नमुना १० जनरेट करा</button>
+                            </div>
+                        </div>
+                        <div class="cell"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+		<% include ../_partials/footer%>
+	</body>
+</html>

@@ -1,0 +1,153 @@
+<html>
+	<head>
+		<% include ../_partials/head %>
+        <style>
+        .page-content {
+            min-height: 100%;
+            height: 100%;
+        }
+        </style>
+	</head>
+	<body>
+		<div class="page-content">
+            <center>
+                <h1>नमुना ८</h1><br>
+                <h3>सन २०१६-२०१७ या वर्षासाठी कर आकारणी नोंदवही</h3><br>
+                <h3>ग्रामपंचायत: <%= user.village %>, तालुका: अंबाजोगाई</h3>
+            </center><br>
+
+            <table class="table border bordered">
+                <thead>
+                    <td>अ.क्र.</td>
+                    <td>रस्त्याचे नाव</td>
+                    <td>सर्वे नंबर</td>
+                    <td>मालमत्ता क्रमांक</td>
+                    <td>मालकाचे नाव</td>
+                    <td>भोगवटदाराचे नाव</td>
+                    <td>मालमत्तेचे वर्णन</td>
+                    <td>बांधकामाचे वर्ष व वयोमान</td>
+                    <td>क्षेत्रफळ</td>
+                    <td colspan="3">रेडी रेकनर दर प्रती चौ. मीटर (रुपये)</td>
+                    <td>घसारा दर</td>
+                    <td>भारांक</td>
+                    <td>भांडवली मूल्य</td>
+                    <td>कराचा दर</td>
+                    <td colspan="5">मूल्य निर्धारित केलेल्या कराची रक्कम</td>
+                    <td colspan="5">अपिलांचे निकाल आणि त्यानंतर केलेले फेरफार</td>
+                    <td>शेरा</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>जमीन</th>
+                        <th>इमारत</th>
+                        <th>बांधकाम</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>घरपट्टी</th>
+                        <th>पाणीपट्टी</th>
+                        <th>वीजपट्टी</th>
+                        <th>आरोग्य</th>
+                        <th>एकूण</th>
+                        <th>घरपट्टी</th>
+                        <th>पाणीपट्टी</th>
+                        <th>वीजपट्टी</th>
+                        <th>आरोग्य</th>
+                        <th>एकूण</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                        <th>10</th>
+                        <th>11</th>
+                        <th>12</th>
+                        <th>13</th>
+                        <th>14</th>
+                        <th>15</th>
+                        <th>16</th>
+                        <th>17</th>
+                        <th>18</th>
+                        <th>19</th>
+                        <th>20</th>
+                        <th>21</th>
+                        <th>22</th>
+                        <th>23</th>
+                        <th>24</th>
+                        <th>25</th>
+                        <th>26</th>
+                        <th>27</th>
+                    </tr>
+                    <% var not_executed_before = true; %>
+                    <% citizen.malmatta.forEach(person => {%>
+                    <tr>
+                        <%if(not_executed_before==true) {%>
+                            <td rowspan="<%= citizen.malmatta.length %>"><%= citizen.srno %></td>
+                        <%}%>
+                        <td><%= person.ward_name %></td>
+                        <td><%= person.survey_number %></td>
+                        <td><%= person.malmatta_number %></td>
+                        <%if(not_executed_before==true) {%>
+                            <td rowspan="<%= citizen.malmatta.length %>"><%= citizen.name %></td>
+                        <%}%>
+                        <td><%= person.payee_name %></td>
+                        <td>
+                            <%= person.malmatta_type%> <br><br>
+                            पूर्व: <%= person.east %> <br>
+                            पश्चिम: <%= person.west %> <br>
+                            दक्षिण: <%= person.south %> <br>
+                            उत्तर: <%= person.north %> <br>
+                            दरवाजा: <%= person.door %> <br>
+                        </td>
+                        <td><%= person.majla_tal_year %></td>
+                        <td><%= person.area %></td>
+                        <% if(person.ready_reknar === '710') { %>
+                        <td>710</td>
+                        <td></td>
+                        <td></td>
+                        <% } else { %>
+                        <td></td>
+                        <td><%= person.ready_reknar %></td>
+                        <td></td>
+                        <% } %>
+                        <td><%= person.ghasara_dar %></td>
+                        <td><%= person.bharank_rate %></td>
+                        <td><%= person.bhandwali_mulya %></td>
+                        <td><%= person.kar_rate %></td>
+                        <td><%= person.current_gharpatti %></td>
+                        <td><%= person.current_veej %></td>
+                        <td><%= person.current_panipatti %></td>
+                        <td><%= person.current_aarogya %></td>
+                        <td><%= person.total %></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <% not_executed_before = false %>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+		<% include ../_partials/footer%>
+	</body>
+</html>

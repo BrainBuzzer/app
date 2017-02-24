@@ -106,11 +106,11 @@ module.exports = mongoose.model('Upkar', new Schema({
     panipatti: [panipatti_schema],
     manora_talghar_rate: {
         type: Number,
-        default: 0
+        default: 6
     },
     manora_khulli_jaga_normal_rate: {
         type: Number,
-        default: 0
+        default: 0.4
     },
     imarat: {
         home_rate: {
