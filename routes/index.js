@@ -328,16 +328,16 @@ router.post('/citizen/:id/ten_paavati', isAuthenticated, (req, res) => {
 
 router.get('/send_message', isAuthenticated, (req, res) => {
     Citizen.find({ villageId: req.user.id }, (err, citizens) => {
-        let authkey = '142667ACfRzkmtG58b1262f';
-        let sender_id = 'AMBTAX';
-        let route = 4;
-        let dialcode = 91;
+        var authkey = '142667ACfRzkmtG58b1262f';
+        var sender_id = 'AMBTAX';
+        var route = 4;
+        var dialcode = 91;
         citizens.forEach(citizen => {
-            let total_tax=0;
+            var total_tax=0;
             for (var i = 0; i < citizen.malmatta.length; i++) {
                 total_tax = parseInt(citizen.malmatta[i].previous_gharpatti)+parseInt(citizen.malmatta[i].previous_panipatti)+parseInt(citizen.malmatta[i].previous_veej)+parseInt(citizen.malmatta[i].previous_aarogya)+parseInt(citizen.malmatta[i].current_gharpatti)+parseInt(citizen.malmatta[i].current_panipatti)+parseInt(citizen.malmatta[i].current_veej)+parseInt(citizen.malmatta[i].current_aarogya);
             }
-            let msg = "आपल्याकडे " + total_tax + "₹ कर बाकी आहे. ग्रामपंचायतीकडे तात्काळ कर भरावा.";
+            var msg = "आपल्याकडे " + total_tax + "₹ कर बाकी आहे. ग्रामपंचायतीकडे तात्काळ कर भरावा.";
             msg91.sendOnewithUnicode(authkey,parseInt(citizen.mobile_no),msg,sender_id,route,dialcode,function(response){
                 console.log(response)
             })
