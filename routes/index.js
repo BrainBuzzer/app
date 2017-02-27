@@ -21,6 +21,10 @@ var isAuthenticated = (req, res, next) => {
     res.redirect('/login')
 }
 
+router.get('/', (req, res) => {
+    res.render('index');
+})
+
 router.get('/admin/login', function(req, res) {
     res.render('admin/login', {
         message: req.flash('message'),

@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>MCTax</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+		<style>
+			body {
+				font-family: 'Quicksand', sans-serif;
+			}
+			.center {
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: #ecf0f1;
+				font-size: 3rem;
+			}
+			.left {
+				background-color: #3498db;
+				-moz-transition: all 0.3s;
+				-webkit-transition: all 0.3s;
+				transition: all 0.3s;
+				cursor: hand;
+			}
+			.left:hover {
+				-moz-transform: scale(1.1);
+				-webkit-transform: scale(1.1);
+				transform: scale(1.1);
+			}
+			.right {
+				cursor: hand;
+				background-color: #2ecc71;
+				-moz-transition: all 0.3s;
+				-webkit-transition: all 0.3s;
+				transition: all 0.3s;
+			}
+			.right:hover {
+				-moz-transform: scale(1.1);
+				-webkit-transform: scale(1.1);
+				transform: scale(1.1);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="row">
+			<div class="one-half column center left" id="a">User Login</div>
+			<div class="one-half column center right" id="b">Admin Login</div>
+		</div>
+		<script>
+			a = document.getElementById('a');
+			b = document.getElementById('b');
+			a.addEventListener('click', function() {
+				window.location.href = "http://mctax.in/login"
+			});
+			b.addEventListener('click', function() {
+				window.location.href = "http://mctax.in/admin/login"
+			});
+		</script>
+	</body>
+</html>
