@@ -3,6 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 var flash = require('connect-flash');
 var moment = require('moment');
+var msg91 = require('msg91-sms');
 var village = require('../controller/admin/UserController');
 var upkar_editor = require('../controller/UpkarController');
 var citizen_editor = require('../controller/CitizenController');
@@ -77,6 +78,12 @@ router.post('/admin/updateUser', adminLoggedIn, (req, res) => {
             res.redirect('/admin/addUsers');
         });
     }
+})
+
+router.get('/admin/village/:id', adminLoggedIn, (req, res) => {
+    Citizen.find({ villageId: req.params.id }, (err, citizens) => {
+        res.render('admin/village-citizens', { user: req.user, citizens: citizens, title: 'गावाचे नाव' })
+    })
 })
 
 router.get('/login', (req, res) => {
@@ -204,39 +211,39 @@ router.post('/deleteWard', isAuthenticated, (req, res) => {
 })
 
 router.get('/entry', isAuthenticated, (req, res) => {
-	Upkar.findOne({villageId: req.user.id}, (err, upkar) => {
-		Wards.find({villageId: req.user.id}, (err, wards) => {
-		    res.render('village/entry', {
-		        user: req.user,
-		        malmatta: upkar.varshik_mulya,
-		        panipatti: upkar.panipatti,
-		        wards: wards,
+    Upkar.findOne({villageId: req.user.id}, (err, upkar) => {
+        Wards.find({villageId: req.user.id}, (err, wards) => {
+            res.render('village/entry', {
+                user: req.user,
+                malmatta: upkar.varshik_mulya,
+                panipatti: upkar.panipatti,
+                wards: wards,
                 title: 'नवीन एन्ट्री'
-		    });
-		})
-	})
+            });
+        })
+    })
 })
 
 router.post('/entry', isAuthenticated, (req, res) => {
-	citizen_editor.newCitizen(req.user.id, req.body);
-	res.redirect('/entry');
+    citizen_editor.newCitizen(req.user.id, req.body);
+    res.redirect('/entry');
 })
 
 router.get('/citizens', isAuthenticated, (req, res) => {
-	Citizen.find({ villageId: req.user.id }, (err, citizens) => {
-		res.render('village/citizens', { user: req.user, citizens: citizens, title: 'जनतेची यादी' });
-	});
+    Citizen.find({ villageId: req.user.id }, (err, citizens) => {
+        res.render('village/citizens', { user: req.user, citizens: citizens, title: 'जनतेची यादी' });
+    });
 });
 
 router.post('/deleteCitizen', isAuthenticated, (req, res) => {
-	citizen_editor.deleteCitizen(req.body.type);
-	res.redirect('/citizens')
+    citizen_editor.deleteCitizen(req.body.type);
+    res.redirect('/citizens')
 })
 
 router.get('/citizen/:id', isAuthenticated, (req, res) => {
-	Citizen.findOne({ _id: req.params.id }, (err, citizen) => {
-		res.render('village/citizen_info', { user: req.user, citizen: citizen, title: citizen.name});
-	})
+    Citizen.findOne({ _id: req.params.id }, (err, citizen) => {
+        res.render('village/citizen_info', { user: req.user, citizen: citizen, title: citizen.name});
+    })
 })
 
 router.get('/citizen/:id/addMalmatta', isAuthenticated, (req, res) => {
@@ -272,7 +279,14 @@ router.post('/citizen/:id/kar', isAuthenticated, (req, res) => {
 router.get('/citizen/:id/eight', isAuthenticated, (req, res) => {
     Citizen.findOne({ _id: req.params.id }, (err, citizen) => {
         title = 'नमुना ८';
-        res.render('village/eight_namuna', {user: req.user, citizen: citizen, title: title});
+        res.render('village/eight', {user: req.user, citizen: citizen, title: title});
+    })
+})
+
+router.get('/citizen/:id/eight/:n_id', isAuthenticated, (req, res) => {
+    Citizen.findOne({ _id: req.params.id }, (err, citizen) => {
+        title = 'नमुना ८';
+        res.render('village/eight_namuna', {user: req.user, citizen: citizen, title: title, n: req.params.n_id});
     })
 });
 
@@ -310,6 +324,26 @@ router.post('/citizen/:id/ten_paavati', isAuthenticated, (req, res) => {
         title = 'नमुना १०';
         res.render('village/ten_paavati', { user: req.user, id: req.params.id, malmatta: citizen.malmatta[req.body.m_id], title: title, date: moment().format('Do MMM YYYY'), body: req.body });
     })
+})
+
+router.get('/send_message', isAuthenticated, (req, res) => {
+    Citizen.find({ villageId: req.user.id }, (err, citizens) => {
+        let authkey = '142667ACfRzkmtG58b1262f';
+        let sender_id = 'AMBTAX';
+        let route = 4;
+        let dialcode = 91;
+        citizens.forEach(citizen => {
+            let total_tax=0;
+            for (var i = 0; i < citizen.malmatta.length; i++) {
+                total_tax = parseInt(citizen.malmatta[i].previous_gharpatti)+parseInt(citizen.malmatta[i].previous_panipatti)+parseInt(citizen.malmatta[i].previous_veej)+parseInt(citizen.malmatta[i].previous_aarogya)+parseInt(citizen.malmatta[i].current_gharpatti)+parseInt(citizen.malmatta[i].current_panipatti)+parseInt(citizen.malmatta[i].current_veej)+parseInt(citizen.malmatta[i].current_aarogya);
+            }
+            let msg = "आपल्याकडे " + total_tax + "₹ कर बाकी आहे. ग्रामपंचायतीकडे तात्काळ कर भरावा.";
+            msg91.sendOnewithUnicode(authkey,parseInt(citizen.mobile_no),msg,sender_id,route,dialcode,function(response){
+                console.log(response)
+            })
+        })
+    })
+    res.redirect('/home')
 })
 
 module.exports = router;

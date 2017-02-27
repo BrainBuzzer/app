@@ -45,6 +45,7 @@
                                 <td class="sortable-column">Village</td>
                                 <td class="sortable-column">Username</td>
                                 <td class="sortable-column">Password</td>
+                                <td>Links</td>
                             </tr>
                             </thead>
                             <tbody>
@@ -54,6 +55,7 @@
                                     <td><span id="editable-village-<%= village.id %>"><%= village.village %></span></td>
                                     <td><span id="editable-username-<%= village.id %>"><%= village.username %></span></td>
                                     <td><span id="editable-password-<%= village.id %>"><%= village.password %></span></td>
+                                    <td><a href="/admin/village/<%= village.id %>">लिंक </a></td>
                                 </tr>
                                 <% }) %>
                              </tbody>

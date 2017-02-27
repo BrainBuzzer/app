@@ -9,16 +9,13 @@
         }
         </style>
 	</head>
-	<body class="bg-steel">
+	<body>
 		<% include ../_partials/header%>
-		<div class="page-content">
-            <div class="flex-grid no-responsive-future" style="height: 100%;">
-                <div class="row" style="height: 100%">
-                    <div class="cell auto-size padding20 bg-white" id="cell-content">
-                        <h1 class="text-light">Your Village : <%= user.village %></h1>
-                        <hr class="thin bg-grayLighter">
-                    </div>
-                </div>
+		<div class="container page-content">
+            <div class="grid">
+                <h1 class="text-light">आपले गाव : <%= user.village %></h1>
+                <hr class="thin bg-grayLighter">
+                <h3 class="align-center">वरील मेनू मधील एक प्रकार निवडा</h3>
             </div>
         </div>
 		<% include ../_partials/footer%>

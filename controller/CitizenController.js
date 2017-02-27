@@ -38,9 +38,12 @@ exports.newCitizen = (id, body) => {
     person.mobile_no = body.cell_no;
     person.address = body.address;
 
+
+    malmatta.pupa = body.pupa;
+    malmatta.dau = body.daut;
     malmatta.malmatta_number = body.malmatta_no;
     malmatta.formula = body.formula;
-    malmatta.area = area;
+    malmatta.area = Math.round(area);
     malmatta.majla_tal_use = body.tal_use;
     malmatta.majla_tal_year = body.tal_year;
     malmatta.majla_tal_area = body.tal_area;
@@ -199,9 +202,11 @@ exports.addMalmatta = (id, villageId, body) => {
         _id: id
     }, (err, citizen) => {
         let area = body.pupa * body.daut * 0.09290304;
+        m_u.pupa = body.pupa;
+        m_u.dau = body.daut;
         m_u.malmatta_number = body.malmatta_no;
         m_u.formula = body.formula;
-        m_u.area = area;
+        m_u.area = Math.round(area);
         m_u.majla_tal_use = body.tal_use;
         m_u.majla_tal_year = body.tal_year;
         m_u.majla_tal_area = body.tal_area;

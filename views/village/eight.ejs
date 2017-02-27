@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<% include ../_partials/head %>
+        <style>
+        .page-content {
+            padding-top: 3.5rem;
+            min-height: 100%;
+            height: 100%;
+        }
+        </style>
+	</head>
+	<body>
+        <% include ../_partials/header %>
+		<div class="container page-content">
+            <% var count = 0 %>
+            <% citizen.malmatta.forEach(m => {%>
+                <a class="button primary" href="/citizen/<%= citizen._id %>/eight/<%= count %>">मालमत्ता क्रमांक <%= count+1 %></a>
+                <% count++ %>
+            <% }) %>
+        </div>
+		<% include ../_partials/footer%>
+	</body>
+</html>

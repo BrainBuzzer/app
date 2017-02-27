@@ -5,5 +5,5 @@ module.exports = mongoose.model('User', new Schema({
 	id: String,
 	username: String,
 	password: String,
-	village: String
+	village: String,
 }))
