@@ -30,7 +30,7 @@ var ghasara_dar = (year) => {
 
 exports.newCitizen = (id, body) => {
     var person = new Citizen();
-    let area = body.pupa * body.daut * 0.09290304;
+    var area = body.pupa * body.daut * 0.09290304;
     person.srno = body.srno;
     person.villageId = id;
     person.name = body.name;
@@ -201,7 +201,7 @@ exports.addMalmatta = (id, villageId, body) => {
     Citizen.findOne({
         _id: id
     }, (err, citizen) => {
-        let area = body.pupa * body.daut * 0.09290304;
+        var area = body.pupa * body.daut * 0.09290304;
         m_u.pupa = body.pupa;
         m_u.dau = body.daut;
         m_u.malmatta_number = body.malmatta_no;
@@ -370,7 +370,7 @@ exports.deleteCitizen = id => {
 }
 
 exports.updateKar = (id, body) => {
-    let loc_id = body.kar_id, a = {};
+    var loc_id = body.kar_id, a = {};
     a.current_veej = parseInt(body.veej);
     a.current_aarogya = parseInt(body.aarogya);
     a.current_panipatti = parseInt(body.pani);
@@ -391,7 +391,7 @@ exports.updateKar = (id, body) => {
 }
 
 exports.payKar = (id, body) => {
-    let loc_id = body.malmatta_id, a = {};
+    var loc_id = body.malmatta_id, a = {};
     a.previous_paid_gharpatti = parseInt(body.previous_paid_gharpatti);
     a.current_paid_gharpatti = parseInt(body.current_paid_gharpatti);
     a.previous_paid_veej = parseInt(body.previous_paid_veej);
