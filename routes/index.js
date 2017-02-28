@@ -134,49 +134,49 @@ router.post('/add_varshik_mulya', isAuthenticated, (req, res) => {
 })
 
 router.post('/updateVarshikMulyaRate', isAuthenticated, (req, res) => {
-    upkar_editor.deleteVarshikMulya(req.body);
+    upkar_editor.deleteVarshikMulya(req.body, req.user.id);
     res.redirect('/upkar');
 })
 
 router.post('/add_veej_kar', isAuthenticated, (req, res) => {
-    upkar_editor.addVeejKar(req.body);
+    upkar_editor.addVeejKar(req.body, req.user.id);
     res.redirect('/upkar');
 })
 
 router.post('/updateVeejKarRate', isAuthenticated, (req, res) => {
-    upkar_editor.deleteVeejKar(req.body);
+    upkar_editor.deleteVeejKar(req.body, req.user.id);
 })
 
 router.post('/add_aarogya_kar', isAuthenticated, (req, res) => {
-    upkar_editor.addAarogyaKar(req.body);
+    upkar_editor.addAarogyaKar(req.body, req.user.id);
     res.redirect('/upkar');
 })
 
 router.post('/updateAarogyaKarRate', isAuthenticated, (req, res) => {
-    upkar_editor.deleteAarogyaKar(req.body);
+    upkar_editor.deleteAarogyaKar(req.body, req.user.id);
 })
 
 router.post('/add_panipatti', isAuthenticated, (req, res) => {
-    upkar_editor.addPanipatti(req.body);
+    upkar_editor.addPanipatti(req.body, req.user.id);
     res.redirect('/upkar');
 })
 
 router.post('/updatePanipattiRate', isAuthenticated, (req, res) => {
-    upkar_editor.deletePanipatti(req.body);
+    upkar_editor.deletePanipatti(req.body, req.user.id);
 })
 
 router.post('/manora_talghar_rate_update', isAuthenticated, (req, res) => {
-    upkar_editor.talgharRateUpdate(req.body);
+    upkar_editor.talgharRateUpdate(req.body, req.user.id);
     res.redirect('/upkar');
 })
 
 router.post('/manora_khulli_jaga_update', isAuthenticated, (req, res) => {
-    upkar_editor.khulliRateUpdate(req.body);
+    upkar_editor.khulliRateUpdate(req.body, req.user.id);
     res.redirect('/upkar');
 })
 
 router.post('/update_imarat', isAuthenticated, (req, res) => {
-    upkar_editor.imaratRateUpdate(req.body);
+    upkar_editor.imaratRateUpdate(req.body, req.user.id);
     res.redirect('/upkar');
 })
 

@@ -2,11 +2,10 @@ const Upkar = require('../models/Upkar');
 
 var exports = module.exports = {};
 
-exports.updateImaratKarRate = (body) => {
+exports.updateImaratKarRate = (body, id) => {
     if (body.type == 1) {
-        console.log(body.type);
         Upkar.findOneAndUpdate({
-            id: body.id
+            villageId: id
         }, {
             $set: {
                 zopdi_per_thousand: body.rate_per_thousand,
@@ -22,7 +21,7 @@ exports.updateImaratKarRate = (body) => {
     } else if (body.type == 2) {
         console.log(body.type);
         Upkar.findOneAndUpdate({
-            id: body.id
+            villageId: id
         }, {
             $set: {
                 vita_per_thousand: body.rate_per_thousand,
@@ -38,7 +37,7 @@ exports.updateImaratKarRate = (body) => {
     } else if (body.type == 3) {
         console.log(body.type);
         Upkar.findOneAndUpdate({
-            id: body.id
+            villageId: id
         }, {
             $set: {
                 cement_per_thousand: body.rate_per_thousand,
@@ -54,7 +53,7 @@ exports.updateImaratKarRate = (body) => {
     } else if (body.type == 4) {
         console.log(body.type);
         Upkar.findOneAndUpdate({
-            id: body.id
+            villageId: id
         }, {
             $set: {
                 rcc_per_thousand: body.rate_per_thousand,
@@ -70,7 +69,7 @@ exports.updateImaratKarRate = (body) => {
     } else if (body.type == 5) {
         console.log(body.type);
         Upkar.findOneAndUpdate({
-            id: body.id
+            villageId: id
         }, {
             $set: {
                 khulli_jamin_per_thousand: body.rate_per_thousand
@@ -85,9 +84,9 @@ exports.updateImaratKarRate = (body) => {
     }
 }
 
-exports.addVarshikMulya = (body) => {
+exports.addVarshikMulya = (body, id) => {
     Upkar.findOneAndUpdate({
-        id: body.id
+        villageId: id
     }, {
         $push: {
             varshik_mulya: {
@@ -103,9 +102,9 @@ exports.addVarshikMulya = (body) => {
     })
 }
 
-exports.deleteVarshikMulya = (body) => {
+exports.deleteVarshikMulya = (body, id) => {
     Upkar.findOne({
-        id: body.id
+        villageId: id
     }, (err, upkar) => {
         if (err) return handleError(err);
         upkar.varshik_mulya.id(body.type).remove();
@@ -116,9 +115,9 @@ exports.deleteVarshikMulya = (body) => {
     });
 }
 
-exports.addVeejKar = (body) => {
+exports.addVeejKar = (body, id) => {
     Upkar.findOneAndUpdate({
-        id: body.id
+        villageId: id
     }, {
         $push: {
             veej_kar: {
@@ -136,9 +135,9 @@ exports.addVeejKar = (body) => {
     })
 }
 
-exports.deleteVeejKar = (body) => {
+exports.deleteVeejKar = (body, id) => {
     Upkar.findOne({
-        id: body.id
+        villageId: id
     }, (err, upkar) => {
         if (err) return handleError(err);
         upkar.veej_kar.id(body.type).remove();
@@ -149,9 +148,9 @@ exports.deleteVeejKar = (body) => {
     });
 }
 
-exports.addAarogyaKar = (body) => {
+exports.addAarogyaKar = (body, id) => {
     Upkar.findOneAndUpdate({
-        id: body.id
+        villageId: id
     }, {
         $push: {
             aarogya_kar: {
@@ -169,9 +168,9 @@ exports.addAarogyaKar = (body) => {
     })
 }
 
-exports.deleteAarogyaKar = (body) => {
+exports.deleteAarogyaKar = (body, id) => {
     Upkar.findOne({
-        id: body.id
+        villageId: id
     }, (err, upkar) => {
         if (err) return handleError(err);
         upkar.aarogya_kar.id(body.type).remove();
@@ -182,9 +181,9 @@ exports.deleteAarogyaKar = (body) => {
     });
 }
 
-exports.addPanipatti = (body) => {
+exports.addPanipatti = (body, id) => {
     Upkar.findOneAndUpdate({
-        id: body.id
+        villageId: id
     }, {
         $push: {
             panipatti: {
@@ -200,9 +199,9 @@ exports.addPanipatti = (body) => {
     })
 }
 
-exports.deletePanipatti = (body) => {
+exports.deletePanipatti = (body, id) => {
     Upkar.findOne({
-        id: body.id
+        villageId: id
     }, (err, upkar) => {
         if (err) return handleError(err);
         upkar.panipatti.id(body.type).remove();
@@ -213,9 +212,9 @@ exports.deletePanipatti = (body) => {
     });
 }
 
-exports.talgharRateUpdate = (body) => {
+exports.talgharRateUpdate = (body, id) => {
     Upkar.findOneAndUpdate({
-        id: body.id
+        villageId: id
     }, {
         $set: {
             manora_talghar_rate: body.manora_rate
@@ -228,9 +227,9 @@ exports.talgharRateUpdate = (body) => {
     })
 }
 
-exports.khulliRateUpdate = (body) => {
+exports.khulliRateUpdate = (body, id) => {
     Upkar.findOneAndUpdate({
-        id: body.id
+        villageId: id
     }, {
         $set: {
             manora_khulli_jaga_normal_rate: body.manora_khulla_rate
@@ -243,9 +242,9 @@ exports.khulliRateUpdate = (body) => {
     })
 }
 
-exports.imaratRateUpdate = body => {
+exports.imaratRateUpdate = (body, id) => {
     Upkar.findOneAndUpdate({
-        id: body.id
+        villageId: id
     }, {
         $set: {
             imarat: {
