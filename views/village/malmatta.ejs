@@ -1,0 +1,100 @@
+<html>
+	<head>
+		<% include ../_partials/head %>
+        <style>
+        .page-content {
+            padding-top: 3.125rem;
+            min-height: 100%;
+            height: 100%;
+        }
+        </style>
+	</head>
+	<body>
+		<% include ../_partials/header %>
+		<div class="container page-content">
+            <div class="grid">
+                <div class="row cells3">
+                    <div class="cell"></div>
+                    <div class="cell">
+                        <div class="form-actions">
+                            <a href="/citizen/<%= citizen._id %>/addMalmatta" class="primary button full-size">नवीन मालमत्ता</a>
+                        </div>
+                    </div>
+                    <div class="cell"></div>
+                </div>
+                <form method="post" action="delete_m">
+                    <div class="row cells2">
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <% var count = 0 %>
+                                <label for="malmatta_number">मालमत्ता क्रमांक</label>
+                                <select name="malmatta_number">
+                                    <% citizen.malmatta.forEach(m => {%>
+                                        <option value="<%= m._id %>"><%= m.malmatta_number %></option>
+                                        <% count++ %>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="form-action full-size"></div>
+                            <button type="submit" class="primary button full-size">मालमत्ता काढून टाका</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="row"><b>नमुना ८</b></div>
+                <div class="row">
+                    <% var m_count = 0 %>
+                    <% citizen.malmatta.forEach(m => {%>
+                        <a class="primary button" href="/citizen/<%= citizen._id %>/eight/<%= m_count %>">मालमत्ता क्रमांक <%= m.malmatta_number %></a>
+                        <% m_count++ %>
+                    <%})%>
+                </div>
+                <div class="row"><b>नमुना ९</b></div>
+                <form method="post" action="nine_k">
+                    <div class="row cells2">
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <% var count = 0 %>
+                                <label for="malmatta_id">मालमत्ता क्रमांक</label>
+                                <select name="malmatta_id">
+                                    <% citizen.malmatta.forEach(m => {%>
+                                        <option value="<%= count %>"><%= m.malmatta_number %></option>
+                                        <% count++ %>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="form-action full-size"></div>
+                            <button type="submit" class="primary button full-size">नमुना ९ सादर करा</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="row"><b>नमुना १०</b></div>
+                <form action="/citizen/<%= citizen._id %>/ten" method="post">
+                    <div class="row cells2">
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <% var count = 0 %>
+                                <label for="malmatta_id">मालमत्ता क्रमांक</label>
+                                <select name="malmatta_id">
+                                    <% citizen.malmatta.forEach(m => {%>
+                                        <option value="<%= count %>"><%= m.malmatta_number %></option>
+                                        <% count++ %>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="form-actions">
+                                <button class="primary button full-size" type="submit">नमुना १०</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+		<% include ../_partials/footer%>
+	</body>
+</html>

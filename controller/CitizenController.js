@@ -418,3 +418,32 @@ exports.payKar = (id, body) => {
         if(err) throw err;
     });
 }
+
+exports.updateCitizenInfo = (body, id) => {
+    Citizen.findOneAndUpdate(
+    { "_id": id },
+    { 
+        "$set": {
+            "name": body.name,
+            "wife_name": body.wife_name,
+            "mobile_no": body.cell_no,
+            "address": body.address
+        }
+    },
+    function(err,doc) {
+        if(err) throw err;
+    });
+}
+
+exports.deleteMalmatta = (body, id) => {
+    Citizen.findOne({
+        _id: id
+    }, (err, citizen) => {
+        if (err) return handleError(err);
+        citizen.malmatta.id(body.malmatta_number).remove();
+        citizen.save((err) => {
+            if (err) throw err;
+            console.log("removed");
+        })
+    });
+}

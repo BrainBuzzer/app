@@ -30,34 +30,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <a href="/citizen/<%= citizen._id %>/addMalmatta" class="primary button">नवीन मालमत्ता</a>
+                    <a href="/citizen/<%= citizen._id %>/edit" class="primary button">माहिती बदल</a>
+                    <a href="/citizen/<%= citizen._id %>/malmatta" class="primary button">मालमत्ता</a>
                     <a href="/citizen/<%= citizen._id %>/kar" class="primary button">कर आकारा</a>
-                    <a href="/citizen/<%= citizen._id %>/eight" class="primary button">नमुना ८</a>
-                    <a href="/citizen/<%= citizen._id %>/nine" class="primary button">नमुना ९</a>
-                    <a href="/citizen/<%= citizen._id %>/nine_k" class="primary button">नमुना ९ (क)</a>
                 </div>
-                <div class="row">
-                        <form action="/citizen/<%= citizen._id %>/ten" method="post">
-                            <div class="input-control select">
-                                <label for="malmatta_id">मालमत्ता क्रमांक: </label>
-                                <select name="malmatta_id">
-                                    <option value="0">1</option>
-                                    <option value="1">2</option>
-                                    <option value="2">3</option>
-                                    <option value="3">4</option>
-                                    <option value="4">5</option>
-                                    <option value="5">6</option>
-                                    <option value="6">7</option>
-                                    <option value="7">8</option>
-                                    <option value="8">9</option>
-                                    <option value="9">10</option>
-                                </select>
-                            </div>
-                            <div class="form-actions">
-                                <button class="primary button" type="submit">नमुना १०</button>
-                            </div>
-                        </form>
-                    </div>
             </div>
         </div>
 		<% include ../_partials/footer%>

@@ -250,16 +250,41 @@ router.get('/citizen/:id', isAuthenticated, (req, res) => {
     })
 })
 
+router.get('/citizen/:id/edit', isAuthenticated, (req, res) => {
+    Citizen.findOne({ _id: req.params.id }, (err, citizen) => {
+        res.render('village/edit', { user: req.user, citizen: citizen, title: citizen.name});
+    })
+})
+
+router.post('/citizen/:id/edit', isAuthenticated, (req, res) => {
+    citizen_editor.updateCitizenInfo(req.body, req.params.id);
+    res.redirect('/citizen/' + req.params.id);
+})
+
+router.get('/citizen/:id/malmatta', isAuthenticated, (req, res) => {
+    Citizen.findOne({ _id: req.params.id }, (err, citizen) => {
+        res.render('village/malmatta', { citizen: citizen, title: 'मालमत्ता', user: req.user });
+    })
+})
+
+router.post('/citizen/:id/delete_m', isAuthenticated, (req, res) => {
+    citizen_editor.deleteMalmatta(req.body, req.params.id);
+    res.redirect('/citizen/' + req.params.id + '/malmatta');
+})
+
 router.get('/citizen/:id/addMalmatta', isAuthenticated, (req, res) => {
     Upkar.findOne({villageId: req.user.id}, (err, upkar) => {
         Wards.find({villageId: req.user.id}, (err, wards) => {
-            res.render('village/add_malmatta', {
-                user: req.user,
-                malmatta: upkar.varshik_mulya,
-                panipatti: upkar.panipatti,
-                wards: wards,
-                title: 'नवीन मालमत्ता'
-            });
+            Citizen.findOne({ _id: req.params.id }, (err, citizen) => {
+                res.render('village/add_malmatta', {
+                    user: req.user,
+                    name: citizen.name,
+                    malmatta: upkar.varshik_mulya,
+                    panipatti: upkar.panipatti,
+                    wards: wards,
+                    title: 'नवीन मालमत्ता'
+                });
+            })
         })
     })
 })
