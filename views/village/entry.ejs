@@ -718,28 +718,8 @@
                                 <label for="panipatti_type">पाणीपट्टी प्रकार</label>
                                 <select name="panipatti_type" id="panipatti_type">
                                     <% panipatti.forEach(pani => { %>
-                                    <option value="<%= pani.name %>"><%= pani.name %></option>
+                                    <option value="<%= pani.rate %>"><%= pani.name %></option>
                                     <% }) %>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row cells2">
-                        <div class="cell">
-                            <div class="input-control full-size select">
-                                <label for="five_percent_off">५% सूट</label>
-                                <select name="five_percent_off" id="five_percent_off">
-                                    <option value="yes">हो</option>
-                                    <option value="no">नाही</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="cell">
-                            <div class="input-control full-size select">
-                                <label for="five_percent_extra">५% दंड</label>
-                                <select name="five_percent_extra" id="five_percent_extra">
-                                    <option value="yes">हो</option>
-                                    <option value="no">नाही</option>
                                 </select>
                             </div>
                         </div>
