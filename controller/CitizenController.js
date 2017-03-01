@@ -378,6 +378,9 @@ exports.updateKar = (id, body) => {
     a.current_veej = parseInt(body.veej);
     a.current_aarogya = parseInt(body.aarogya);
     a.current_panipatti = parseInt(body.pani);
+    a.previous_veej = parseInt(body.previous_veej);
+    a.previous_aarogya = parseInt(body.previous_aarogya);
+    a.previous_panipatti = parseInt(body.previous_pani);
     a.total = parseInt(body.veej) + parseInt(body.aarogya) + parseInt(body.pani) + parseInt(body.gharpatti);
     Citizen.findOneAndUpdate(
     { "_id": id, "malmatta._id": loc_id },

@@ -39,6 +39,7 @@
                     <th class="rotate"><div><span>सर्वे नंबर</span></div></th>
                     <th class="rotate"><div><span>मालमत्ता क्रमांक</span></div></th>
                     <th class="rotate"><div><span>मालकाचे नाव</span></div></th>
+                    <th class="rotate"><div><span>नवरा/बायकोचे नाव</span></div></th>
                     <th class="rotate"><div><span>भोगवटदाराचे नाव</span></div></th>
                     <th colspan="3">मालमत्तेचे वर्णन</th>
                     <th class="rotate"><div><span>बांधकामाचे वर्ष व वयोमान</span></div></th>
@@ -53,6 +54,7 @@
                     <th>शेरा</th>
                 </tr>
                 <tr>
+                    <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -87,7 +89,7 @@
                     <th>1</th>
                     <th>2</th>
                     <th>3</th>
-                    <th>4</th>
+                    <th colspan="2">4</th>
                     <th>5</th>
                     <th>6</th>
                     <th colspan="3">7</th>
@@ -118,6 +120,7 @@
                     <td><%= citizen.malmatta[n].survey_number %></td>
                     <td><%= citizen.malmatta[n].malmatta_number %></td>
                     <td class="rotate"><div><span><%= citizen.name %></span></div></td>
+                    <td class="rotate"><div><span><%= citizen.wife_name %></span></div></td>
                     <td class="rotate"><div><span><%= citizen.malmatta[n].payee_name %></span></div></td>
                     <td class="rotate">
                         <div><span><%= citizen.malmatta[n].malmatta_type%></span></div>

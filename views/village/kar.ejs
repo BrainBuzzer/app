@@ -15,32 +15,50 @@
             <div class="grid">
                 <% var count = 0 %>
                 <% citizen.malmatta.forEach(kar => { %>
-                <b>मालमत्ता क्रमांक <%= count++ %></b>
+                <b>मालमत्ता क्रमांक <%= kar.malmatta_number %></b>
                 <form method="post"><br>
                     <input type="hidden" value="<%= kar._id %>" name="kar_id">
                     <input type="hidden" value="<%= kar.current_gharpatti %>" name="gharpatti">
-                    <div class="row cells">
+                    <div class="row cells2">
                         <div class="cell">
                             <div class="input-control text full-size">
-                                <label for="veej">वीजपट्टी</label>
+                                <label for="veej">चालू वीजपट्टी</label>
                                 <input type="text" name="veej" value="<%= kar.current_veej %>">
                             </div>        
                         </div>
-                    </div>
-                    <div class="row cells">
                         <div class="cell">
                             <div class="input-control text full-size">
-                                <label for="aarogya">आरोग्य</label>
+                                <label for="previous_veej">थकीत वीजपट्टी</label>
+                                <input type="text" name="previous_veej" value="<%= kar.previous_veej %>">
+                            </div>        
+                        </div>
+                    </div>
+                    <div class="row cells2">
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="aarogya">चालू आरोग्य</label>
                                 <input type="text" name="aarogya" value="<%= kar.current_aarogya %>">
                             </div>
                         </div>
-                    </div>
-                    <div class="row cells">
                         <div class="cell">
                             <div class="input-control text full-size">
-                                <label for="pani">पाणीपट्टी</label>
-                                <input type="text" name="pani" value="<%= kar.current_panipatti %>">
+                                <label for="previous_aarogya">थकीत आरोग्य</label>
+                                <input type="text" name="previous_aarogya" value="<%= kar.previous_aarogya %>">
                             </div>        
+                        </div>
+                    </div>
+                    <div class="row cells2">
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="pani">चालू पाणीपट्टी</label>
+                                <input type="text" name="pani" value="<%= kar.current_panipatti %>">
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="previous_pani">थकीत पाणीपट्टी</label>
+                                <input type="text" name="previous_pani" value="<%= kar.previous_panipatti %>">
+                            </div>
                         </div>
                     </div>
                     <div class="form-actions">
