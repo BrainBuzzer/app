@@ -35,7 +35,7 @@
                         </div>
                         <div class="cell">
                             <div class="input-control text full-size">
-                                <label for="name">नाव</label>
+                                <label for="name">मालकाचे नाव</label>
                                 <span class="mif-user prepend-icon"></span>
                                 <input type="text" required name="name" id="name" data-parsley-required="true" v-model="name">
                             </div>
@@ -96,7 +96,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row cells2">
+                    <div class="row cells3">
                         <div class="cell">
                             <div class="input-control full-size text">
                                 <label for="pupa">पूर्व-पश्चिम</label>
@@ -107,6 +107,14 @@
                             <div class="input-control full-size text">
                                 <label for="daut">दक्षिण-उत्तर</label>
                                 <input type="text" required name="daut" id="daut" data-parsley-type="number" data-parsley-trigger="change" v-model="daut">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">
+                            <div class="input-control textarea">
+                                <label for="side_comment">बाजू शेरा</label>
+                                <textarea name="side_comment"></textarea>
                             </div>
                         </div>
                     </div>

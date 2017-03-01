@@ -70,6 +70,7 @@ exports.newCitizen = (id, body) => {
     malmatta.north = body.north;
     malmatta.door = body.door;
     malmatta.comment = body.comment;
+    malmatta.side_comment = body.side_comment;
     malmatta.current_panipatti = body.panipatti_type;
     malmatta.current_aarogya = body.aarogya_type;
     malmatta.current_veej = body.veej_type;
@@ -236,6 +237,7 @@ exports.addMalmatta = (id, villageId, body) => {
         m_u.north = body.north;
         m_u.door = body.door;
         m_u.comment = body.comment;
+        malmatta.side_comment = body.side_comment;
         m_u.current_panipatti = body.panipatti_type;
         m_u.current_aarogya = body.aarogya_type;
         m_u.current_veej = body.veej_type;

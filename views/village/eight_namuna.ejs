@@ -41,7 +41,7 @@
                     <th class="rotate"><div><span>मालकाचे नाव</span></div></th>
                     <th class="rotate"><div><span>नवरा/बायकोचे नाव</span></div></th>
                     <th class="rotate"><div><span>भोगवटदाराचे नाव</span></div></th>
-                    <th colspan="3">मालमत्तेचे वर्णन</th>
+                    <th colspan="4">मालमत्तेचे वर्णन</th>
                     <th class="rotate"><div><span>बांधकामाचे वर्ष व वयोमान</span></div></th>
                     <th>क्षेत्रफळ</th>
                     <th colspan="3">रेडी रेकनर दर प्रती चौ. मीटर (रुपये)</th>
@@ -64,6 +64,7 @@
                     <th>मालमत्तेचा प्रकार</th>
                     <th>चातुर्सिमा</th>
                     <th>बाजू</th>
+                    <th>शेरा</th>
                     <th></th>
                     <th></th>
                     <th>जमीन</th>
@@ -89,10 +90,10 @@
                     <th>1</th>
                     <th>2</th>
                     <th>3</th>
-                    <th colspan="2">4</th>
-                    <th>5</th>
+                    <th>4</th>
+                    <th colspan="2">5</th>
                     <th>6</th>
-                    <th colspan="3">7</th>
+                    <th colspan="4">7</th>
                     <th>8</th>
                     <th>9</th>
                     <th>10</th>
@@ -135,6 +136,9 @@
                     <td>
                         पूर्व-पश्चिम: <%= citizen.malmatta[n].pupa %> <br>
                         दक्षिण-उत्तर: <%= citizen.malmatta[n].dau %>
+                    </td>
+                    <td>
+                        <%= citizen.malmatta[n].side_comment %>
                     </td>
                     <td><%= citizen.malmatta[n].majla_tal_year %></td>
                     <td><%= citizen.malmatta[n].area %></td>
