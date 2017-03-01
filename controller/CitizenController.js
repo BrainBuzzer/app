@@ -37,8 +37,6 @@ exports.newCitizen = (id, body) => {
     person.wife_name = body.wife_name;
     person.mobile_no = body.cell_no;
     person.address = body.address;
-
-
     malmatta.pupa = body.pupa;
     malmatta.dau = body.daut;
     malmatta.malmatta_number = body.malmatta_no;
@@ -71,6 +69,7 @@ exports.newCitizen = (id, body) => {
     malmatta.south = body.south;
     malmatta.north = body.north;
     malmatta.door = body.door;
+    malmatta.comment = body.comment;
     malmatta.current_panipatti = body.panipatti_type;
     if (body.malmatta_type === 'a') {
         Upkar.findOne({
@@ -85,7 +84,7 @@ exports.newCitizen = (id, body) => {
             malmatta.bharank_rate = bharank.rate;
             malmatta.ready_reknar = upkar.zopdi_reknar_dar;
             malmatta.kar_rate = upkar.zopdi_per_thousand;
-            malmatta.ghasara_dar = ghasara_dar(2017 - body.majla_tal_year);
+            malmatta.ghasara_dar = ghasara_dar(2017 - body.tal_year);
             malmatta.total = Math.round(current_gharpatti);
             person.malmatta.push(malmatta);
             person.save(err => {
@@ -105,7 +104,7 @@ exports.newCitizen = (id, body) => {
             malmatta.bharank_rate = bharank.rate;
             malmatta.ready_reknar = upkar.vita_reknar_dar;
             malmatta.kar_rate = upkar.vita_per_thousand;
-            malmatta.ghasara_dar = ghasara_dar(2017 - body.majla_tal_year);
+            malmatta.ghasara_dar = ghasara_dar(2017 - body.tal_year);
             malmatta.total = Math.round(current_gharpatti);
             person.malmatta.push(malmatta);
             person.save(err => {
@@ -125,7 +124,7 @@ exports.newCitizen = (id, body) => {
             malmatta.bharank_rate = bharank.rate;
             malmatta.ready_reknar = upkar.cement_reknar_dar;
             malmatta.kar_rate = upkar.cement_per_thousand;
-            malmatta.ghasara_dar = ghasara_dar(2017 - body.majla_tal_year);
+            malmatta.ghasara_dar = ghasara_dar(2017 - body.tal_year);
             malmatta.total = Math.round(current_gharpatti);
             person.malmatta.push(malmatta);
             person.save(err => {
@@ -145,7 +144,7 @@ exports.newCitizen = (id, body) => {
             malmatta.bharank_rate = bharank.rate;
             malmatta.ready_reknar = upkar.rcc_reknar_dar;
             malmatta.kar_rate = upkar.rcc_per_thousand;
-            malmatta.ghasara_dar = ghasara_dar(2017 - body.majla_tal_year);
+            malmatta.ghasara_dar = ghasara_dar(2017 - body.tal_year);
             malmatta.total = Math.round(current_gharpatti);
             person.malmatta.push(malmatta);
             person.save(err => {
@@ -234,6 +233,7 @@ exports.addMalmatta = (id, villageId, body) => {
         m_u.south = body.south;
         m_u.north = body.north;
         m_u.door = body.door;
+        m_u.comment = body.comment;
         m_u.current_panipatti = body.panipatti_type;
         if (body.malmatta_type === 'a') {
             Upkar.findOne({
@@ -248,7 +248,7 @@ exports.addMalmatta = (id, villageId, body) => {
                 m_u.bharank_rate = bharank.rate;
                 m_u.ready_reknar = upkar.zopdi_reknar_dar;
                 m_u.kar_rate = upkar.zopdi_per_thousand;
-                m_u.ghasara_dar = ghasara_dar(2017 - body.majla_tal_year);
+                m_u.ghasara_dar = ghasara_dar(2017 - body.tal_year);
                 m_u.total = Math.round(current_gharpatti);
                 citizen.malmatta.push(m_u);
                 citizen.save(err => {
@@ -268,7 +268,7 @@ exports.addMalmatta = (id, villageId, body) => {
                 m_u.bharank_rate = bharank.rate;
                 m_u.ready_reknar = upkar.vita_reknar_dar;
                 m_u.kar_rate = upkar.vita_per_thousand;
-                m_u.ghasara_dar = ghasara_dar(2017 - body.majla_tal_year);
+                m_u.ghasara_dar = ghasara_dar(2017 - body.tal_year);
                 m_u.total = Math.round(current_gharpatti);
                 citizen.malmatta.push(m_u);
                 citizen.save(err => {
@@ -288,7 +288,7 @@ exports.addMalmatta = (id, villageId, body) => {
                 m_u.bharank_rate = bharank.rate;
                 m_u.ready_reknar = upkar.cement_reknar_dar;
                 m_u.kar_rate = upkar.cement_per_thousand;
-                m_u.ghasara_dar = ghasara_dar(2017 - body.majla_tal_year);
+                m_u.ghasara_dar = ghasara_dar(2017 - body.tal_year);
                 m_u.total = Math.round(current_gharpatti);
                 citizen.malmatta.push(m_u);
                 citizen.save(err => {
@@ -308,7 +308,7 @@ exports.addMalmatta = (id, villageId, body) => {
                 m_u.bharank_rate = bharank.rate;
                 m_u.ready_reknar = upkar.rcc_reknar_dar;
                 m_u.kar_rate = upkar.rcc_per_thousand;
-                m_u.ghasara_dar = ghasara_dar(2017 - body.majla_tal_year);
+                m_u.ghasara_dar = ghasara_dar(2017 - body.tal_year);
                 m_u.total = Math.round(current_gharpatti);
                 citizen.malmatta.push(m_u);
                 citizen.save(err => {

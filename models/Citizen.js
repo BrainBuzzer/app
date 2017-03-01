@@ -58,6 +58,7 @@ module.exports = mongoose.model('Citizen', new Schema({
         current_paid_gharpatti: {type: String, default: 0},
         current_paid_panipatti: {type: String, default: 0},
         current_paid_veej: {type: String, default: 0},
-        current_paid_aarogya: {type: String, default: 0}
+        current_paid_aarogya: {type: String, default: 0},
+        comment: {type: String, default: 0}
     }]
 }))

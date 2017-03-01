@@ -22,26 +22,28 @@
                     </div>
                     <div class="cell"></div>
                 </div>
-                <form method="post" action="delete_m">
-                    <div class="row cells2">
-                        <div class="cell">
-                            <div class="input-control text full-size">
-                                <% var count = 0 %>
-                                <label for="malmatta_number">मालमत्ता क्रमांक</label>
-                                <select name="malmatta_number">
-                                    <% citizen.malmatta.forEach(m => {%>
-                                        <option value="<%= m._id %>"><%= m.malmatta_number %></option>
-                                        <% count++ %>
-                                    <% }) %>
-                                </select>
+                <% if(citizen.malmatta.length > 1) {%>
+                    <form method="post" onsubmit="if(!confirm('Is the form filled out correctly?')){return false;}" action="delete_m" id="delete_form">
+                        <div class="row cells2">
+                            <div class="cell">
+                                <div class="input-control text full-size">
+                                    <% var count = 0 %>
+                                    <label for="malmatta_number">मालमत्ता क्रमांक</label>
+                                    <select name="malmatta_number" id="mal_id">
+                                        <% citizen.malmatta.forEach(m => {%>
+                                            <option value="<%= m._id %>"><%= m.malmatta_number %></option>
+                                            <% count++ %>
+                                        <% }) %>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="cell">
+                                <div class="form-action full-size"></div>
+                                <button id="submit_btn" type="submit" class="primary button full-size">मालमत्ता काढून टाका</button>
                             </div>
                         </div>
-                        <div class="cell">
-                            <div class="form-action full-size"></div>
-                            <button type="submit" class="primary button full-size">मालमत्ता काढून टाका</button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                <% } %>
                 <div class="row"><b>नमुना ८</b></div>
                 <div class="row">
                     <% var m_count = 0 %>
