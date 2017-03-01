@@ -25,7 +25,7 @@
         </style>
 	</head>
 	<body>
-		<div class="page-content">
+		<div class="page-content" id="print">
             <center>
                 <h1>नमुना ८</h1><br>
                 <h3>सन २०१६-२०१७ या वर्षासाठी कर आकारणी नोंदवही</h3><br>
@@ -162,6 +162,16 @@
                 </tr>
             </table>
         </div>
+        <button class="button primary" onclick="printDiv('print')">Print</button>
+        <script>
+            function printDiv(divName) {
+                 var printContents = document.getElementById(divName).innerHTML;
+                 var originalContents = document.body.innerHTML;
+                 document.body.innerHTML = printContents;
+                 window.print();
+                 document.body.innerHTML = originalContents;
+            }
+        </script>
 		<% include ../_partials/footer%>
 	</body>
 </html>

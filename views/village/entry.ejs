@@ -712,12 +712,32 @@
                     <div class="row cells">
                         <b>कराची माहिती</b>
                     </div>
-                    <div class="row cells">
+                    <div class="row cells3">
                         <div class="cell">
                             <div class="input-control full-size select">
                                 <label for="panipatti_type">पाणीपट्टी प्रकार</label>
                                 <select name="panipatti_type" id="panipatti_type">
                                     <% panipatti.forEach(pani => { %>
+                                    <option value="<%= pani.rate %>"><%= pani.name %></option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control full-size select">
+                                <label for="veej_type">वीज प्रकार</label>
+                                <select name="veej_type" id="veej_type">
+                                    <% veej.forEach(pani => { %>
+                                    <option value="<%= pani.rate %>"><%= pani.name %></option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control full-size select">
+                                <label for="aarogya_type">आरोग्य प्रकार</label>
+                                <select name="aarogya_type" id="aarogya_type">
+                                    <% aarogya.forEach(pani => { %>
                                     <option value="<%= pani.rate %>"><%= pani.name %></option>
                                     <% }) %>
                                 </select>

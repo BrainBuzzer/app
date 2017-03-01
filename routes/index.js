@@ -222,6 +222,8 @@ router.get('/entry', isAuthenticated, (req, res) => {
                 malmatta: upkar.varshik_mulya,
                 panipatti: upkar.panipatti,
                 wards: wards,
+                aarogya: upkar.aarogya_kar,
+                veej: upkar.veej_kar,
                 title: 'नवीन एन्ट्री'
             });
         })
@@ -281,6 +283,8 @@ router.get('/citizen/:id/addMalmatta', isAuthenticated, (req, res) => {
                     name: citizen.name,
                     malmatta: upkar.varshik_mulya,
                     panipatti: upkar.panipatti,
+                    aarogya: upkar.aarogya_kar,
+                    veej: upkar.veej_kar,
                     wards: wards,
                     title: 'नवीन मालमत्ता'
                 });
@@ -356,21 +360,25 @@ router.post('/citizen/:id/ten_paavati', isAuthenticated, (req, res) => {
 })
 
 router.get('/send_message', isAuthenticated, (req, res) => {
+    if(req.user.messages <= 0) {
+        res.redirect('/home')
+    }
     Citizen.find({ villageId: req.user.id }, (err, citizens) => {
         var authkey = '142667ACfRzkmtG58b1262f';
         var sender_id = 'AMBTAX';
         var route = 4;
         var dialcode = 91;
+        var sent_number = 0;
         citizens.forEach(citizen => {
             var total_tax=0;
             for (var i = 0; i < citizen.malmatta.length; i++) {
-                total_tax = parseInt(citizen.malmatta[i].previous_gharpatti)+parseInt(citizen.malmatta[i].previous_panipatti)+parseInt(citizen.malmatta[i].previous_veej)+parseInt(citizen.malmatta[i].previous_aarogya)+parseInt(citizen.malmatta[i].current_gharpatti)+parseInt(citizen.malmatta[i].current_panipatti)+parseInt(citizen.malmatta[i].current_veej)+parseInt(citizen.malmatta[i].current_aarogya);
+                total_tax_remaining = (parseInt(citizen.malmatta[i].previous_gharpatti)+parseInt(citizen.malmatta[i].previous_panipatti)+parseInt(citizen.malmatta[i].previous_veej)+parseInt(citizen.malmatta[i].previous_aarogya)+parseInt(citizen.malmatta[i].current_gharpatti)+parseInt(citizen.malmatta[i].current_panipatti)+parseInt(citizen.malmatta[i].current_veej)+parseInt(citizen.malmatta[i].current_aarogya))-(parseInt(citizen.malmatta[i].previous_paid_gharpatti)+parseInt(citizen.malmatta[i].previous_paid_panipatti)+parseInt(citizen.malmatta[i].previous_paid_veej)+parseInt(citizen.malmatta[i].previous_paid_aarogya)+parseInt(citizen.malmatta[i].current_paid_gharpatti)+parseInt(citizen.malmatta[i].current_paid_panipatti)+parseInt(citizen.malmatta[i].current_paid_veej)+parseInt(citizen.malmatta[i].current_paid_aarogya));
             }
             var msg = "आपल्याकडे " + total_tax + "₹ कर बाकी आहे. ग्रामपंचायतीकडे तात्काळ कर भरावा.";
-            msg91.sendOnewithUnicode(authkey,parseInt(citizen.mobile_no),msg,sender_id,route,dialcode,function(response){
-                console.log(response)
-            })
+            msg91.sendOnewithUnicode(authkey,parseInt(citizen.mobile_no),msg,sender_id,route,dialcode,function(response){})
+            sent_number = sent_number+1;
         })
+        village.removeMessages(req.user.id, sent_number);
     })
     res.redirect('/home')
 })

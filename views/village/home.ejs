@@ -8,6 +8,8 @@
             height: 100%;
         }
         </style>
+        <link rel="stylesheet" href="/stylesheets/home.css">
+        <link rel="stylesheet" href="/stylesheets/odometer.css">
 	</head>
 	<body>
 		<% include ../_partials/header%>
@@ -16,8 +18,20 @@
                 <h1 class="text-light">आपले गाव : <%= user.village %></h1>
                 <hr class="thin bg-grayLighter">
                 <h3 class="align-center">वरील मेनू मधील एक प्रकार निवडा</h3>
+                <hr class="thin bg-grayLighter">
+                <div class="row">
+                    <div class="card">
+                        Total Messages Remaining:
+                        <div id="message_count" class="odometer"></div>
+                    </div>
+                </div>
             </div>
         </div>
 		<% include ../_partials/footer%>
+        <script src="/javascripts/odometer.min.js"></script>
+        <script src="/javascripts/v_home.js"></script>
+        <script>
+            document.getElementById('message_count').innerHTML = '<%= user.messages %>'
+        </script>
 	</body>
 </html>

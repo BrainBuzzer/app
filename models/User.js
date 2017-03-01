@@ -6,4 +6,5 @@ module.exports = mongoose.model('User', new Schema({
 	username: String,
 	password: String,
 	village: String,
+	messages: { type: Number, default: 5000 }
 }))

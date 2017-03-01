@@ -37,3 +37,14 @@ exports.updateUser = (body) => {
     });
     return true;
 }
+
+exports.removeMessages = (id, no) => {
+    User.findOne({ id: id }, (err, user) => {
+        console.log(no);
+        user.messages = parseInt(user.messages) - parseInt(no);
+        console.log(user.messages);
+        user.save(err => {
+            if (err) return handleError(err);
+        })
+    })
+}

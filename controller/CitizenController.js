@@ -71,6 +71,8 @@ exports.newCitizen = (id, body) => {
     malmatta.door = body.door;
     malmatta.comment = body.comment;
     malmatta.current_panipatti = body.panipatti_type;
+    malmatta.current_aarogya = body.aarogya_type;
+    malmatta.current_veej = body.veej_type;
     if (body.malmatta_type === 'a') {
         Upkar.findOne({
             villageId: id
@@ -235,6 +237,8 @@ exports.addMalmatta = (id, villageId, body) => {
         m_u.door = body.door;
         m_u.comment = body.comment;
         m_u.current_panipatti = body.panipatti_type;
+        m_u.current_aarogya = body.aarogya_type;
+        m_u.current_veej = body.veej_type;
         if (body.malmatta_type === 'a') {
             Upkar.findOne({
                 villageId: villageId
