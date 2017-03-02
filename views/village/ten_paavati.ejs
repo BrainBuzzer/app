@@ -2,7 +2,13 @@
 	<head>
 		<% include ../_partials/head %>
 		<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+		<link rel="stylesheet" href="/stylesheets/nine_ten_print.css" media="print">
 		<style>
+			@media print {
+	            html, body {
+	                height: 99%;    
+	            }
+	        }
 			body {
 				font-family: 'Noto Sans', sans-serif;
 			}

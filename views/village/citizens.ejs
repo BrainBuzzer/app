@@ -20,8 +20,7 @@
                             <tr>
                                 <td style="display: none">ID (For technical purposes)</td>
                                 <td class="sortable-column bg-yellow">नाव</td>
-                                <td class="sortable-column bg-yellow">पत्ता</td>
-                                <td class="sortable-column bg-yellow">वार्डचे नाव</td>
+                                <td class="sortable-column bg-yellow">भोगवाटादाराचे नाव</td>
                             </tr>
                             </thead>
                             <tbody>
@@ -29,8 +28,7 @@
                                     <tr>
                                         <td style="display: none"><%= citizen._id %></td>
                                         <td><a href="/citizen/<%= citizen._id %>"><%= citizen.name %></a></td>
-                                        <td><%= citizen.address %></td>
-                                        <td><%= citizen.ward_name %></td>
+                                        <td><%= citizen.malmatta[0].payee_name %></td>
                                     </tr>
                                 <% }) %>
                             </tbody>

@@ -2,18 +2,23 @@
 	<head>
 		<% include ../_partials/head %>
         <style>
+        @media print {
+            html, body {
+                height: 99%;    
+            }
+        }
         .page-content {
             min-height: 100%;
             height: 100%;
         }
         .rotate {
-            height: 250px;
+            height: 200px;
             white-space: nowrap;
         }
 
         .rotate > div {
           transform: 
-            translate(-2px, 60px)
+            translate(-2px, 80px)
             rotate(270deg);
           width: 30px;
         }
@@ -23,13 +28,14 @@
         }
 
         </style>
+        <link rel="stylesheet" href="/stylesheets/print_eight.css" media="print">
 	</head>
 	<body>
 		<div class="page-content" id="print">
             <center>
-                <h1>नमुना ८</h1><br>
-                <h3>सन २०१६-२०१७ या वर्षासाठी कर आकारणी नोंदवही</h3><br>
-                <h3>ग्रामपंचायत: <%= user.village %>, तालुका: अंबाजोगाई</h3>
+                <h3><b>नमुना ८</b></h3><br>
+                <h4>सन २०१६-२०१७ या वर्षासाठी कर आकारणी नोंदवही</h4><br>
+                <h4>ग्रामपंचायत: <%= user.village %>, तालुका: अंबाजोगाई</h4>
             </center><br>
 
             <table border="1">
@@ -168,6 +174,10 @@
                     <td><%= citizen.malmatta[n].comment %></td>
                 </tr>
             </table>
+            <br><br><br><br><br>
+            <div class="align-right">
+                ग्रामसेवक/सरपंच स्वाक्षरी
+            </div>
         </div>
         <button class="button primary" onclick="printDiv('print')">Print</button>
         <script>
