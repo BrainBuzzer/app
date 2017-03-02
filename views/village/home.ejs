@@ -25,13 +25,72 @@
                         <div id="message_count" class="odometer"></div>
                     </div>
                 </div>
+                <div class="row cells2">
+                    <div class="cell">
+                        <div class="card">
+                            <canvas id="pie_chart" width="400" height="400"></canvas>
+                        </div>
+                    </div>
+                    <div class="cell">
+                        <div class="card">
+                            <canvas id="bar_chart" width="400" height="400"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 		<% include ../_partials/footer%>
         <script src="/javascripts/odometer.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
         <script src="/javascripts/v_home.js"></script>
         <script>
-            document.getElementById('message_count').innerHTML = '<%= user.messages %>'
+            document.getElementById('message_count').innerHTML = '<%= user.messages %>';
+            var pie_chart = document.getElementById('pie_chart');
+            var pie = new Chart(pie_chart, {
+                type: 'pie',
+                data: {
+                    labels: ["भरलेली रक्कम", "बाकी रक्कम"],
+                    datasets: [{
+                        data: [<%= user.paid_tax %>, <%= user.remaining_tax %>],
+                        backgroundColor: [
+                            "#e74c3c",
+                            "#2ecc71"
+                        ],
+                        hoverBackgroundColor: [
+                            "#c0392b",
+                            "#27ae60"
+                        ]
+                    }]
+                },
+                options: {
+                    animation: {
+                        animateScale: true
+                    }
+                }
+            })
+            var bar_chart = document.getElementById('bar_chart');
+            var bar = new Chart(bar_chart, {
+                type: 'bar',
+                data: {
+                    labels: ["भरलेली रक्कम", "बाकी रक्कम"],
+                    datasets: [{
+                        data: [<%= user.paid_tax %>, <%= user.remaining_tax %>],
+                        backgroundColor: [
+                            "#e74c3c",
+                            "#2ecc71"
+                        ],
+                        hoverBackgroundColor: [
+                            "#c0392b",
+                            "#27ae60"
+                        ]
+                    }]
+                },
+                options: {
+                    animation: {
+                        animateScale: true
+                    }
+                }
+            })
         </script>
 	</body>
 </html>

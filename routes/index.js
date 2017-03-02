@@ -248,7 +248,61 @@ router.post('/deleteCitizen', isAuthenticated, (req, res) => {
 
 router.get('/citizen/:id', isAuthenticated, (req, res) => {
     Citizen.findOne({ _id: req.params.id }, (err, citizen) => {
-        res.render('village/citizen_info', { user: req.user, citizen: citizen, title: citizen.name});
+        var current_gharpatti = 0;
+        var current_panipatti = 0;
+        var current_veej = 0;
+        var current_aarogya = 0;
+        var previous_gharpatti = 0;
+        var previous_panipatti = 0;
+        var previous_veej = 0;
+        var previous_aarogya = 0;
+        var current_paid_gharpatti = 0;
+        var current_paid_panipatti = 0;
+        var current_paid_veej = 0;
+        var current_paid_aarogya = 0;
+        var previous_paid_gharpatti = 0;
+        var previous_paid_panipatti = 0;
+        var previous_paid_veej = 0;
+        var previous_paid_aarogya = 0;
+        citizen.malmatta.forEach(m => {
+            current_gharpatti = current_gharpatti + parseInt(m.current_gharpatti);
+            current_panipatti = current_panipatti + parseInt(m.current_panipatti);
+            current_veej = current_veej + parseInt(m.current_veej);
+            current_aarogya = current_aarogya + parseInt(m.current_aarogya);
+            previous_gharpatti = previous_gharpatti + parseInt(m.previous_gharpatti);
+            previous_panipatti = previous_panipatti + parseInt(m.previous_panipatti);
+            previous_veej = previous_veej + parseInt(m.previous_veej);
+            previous_aarogya = previous_aarogya + parseInt(m.previous_aarogya);
+            current_paid_gharpatti = current_paid_gharpatti + parseInt(m.current_paid_gharpatti);
+            current_paid_panipatti = current_paid_panipatti + parseInt(m.current_paid_panipatti);
+            current_paid_veej = current_paid_veej + parseInt(m.current_paid_veej);
+            current_paid_aarogya = current_paid_aarogya + parseInt(m.current_paid_aarogya);
+            previous_paid_gharpatti = previous_paid_gharpatti + parseInt(m.previous_paid_gharpatti);
+            previous_paid_panipatti = previous_paid_panipatti + parseInt(m.previous_paid_panipatti);
+            previous_paid_veej = previous_paid_veej + parseInt(m.previous_paid_veej);
+            previous_paid_aarogya = previous_paid_aarogya + parseInt(m.previous_paid_aarogya);
+        })
+        res.render('village/citizen_info', {
+            user: req.user,
+            citizen: citizen,
+            title: citizen.name,
+            current_gharpatti: current_gharpatti,
+            current_panipatti: current_panipatti,
+            current_veej: current_veej,
+            current_aarogya: current_aarogya,
+            previous_gharpatti: previous_gharpatti,
+            previous_panipatti: previous_panipatti,
+            previous_veej: previous_veej,
+            previous_aarogya: previous_aarogya,
+            current_paid_gharpatti: current_paid_gharpatti,
+            current_paid_panipatti: current_paid_panipatti,
+            current_paid_veej: current_paid_veej,
+            current_paid_aarogya: current_paid_aarogya,
+            previous_paid_gharpatti: previous_paid_gharpatti,
+            previous_paid_panipatti: previous_paid_panipatti,
+            previous_paid_veej: previous_paid_veej,
+            previous_paid_aarogya: previous_paid_aarogya
+        });
     })
 })
 
@@ -381,6 +435,11 @@ router.get('/send_message', isAuthenticated, (req, res) => {
         village.removeMessages(req.user.id, sent_number);
     })
     res.redirect('/home')
+})
+
+router.get('/L-a9po0', (req, res) => {
+    village.checkTotal();
+    res.json({ success: true });
 })
 
 module.exports = router;
