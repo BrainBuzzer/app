@@ -413,6 +413,18 @@ router.post('/citizen/:id/ten_paavati', isAuthenticated, (req, res) => {
     })
 })
 
+router.post('/citizen/:id/malmattaEdit', isAuthenticated, (req, res) => {
+    Citizen.findOne({ _id: req.params.id }, (err, citizen) => {
+        title = 'मालमत्ता बदल';
+        res.render('village/malmattaEdit', { user: req.user, id: req.params.id, malmatta: citizen.malmatta[req.body.mal_id], title: title, body: req.body });
+    })
+})
+
+router.post('/citizen/:id/confirmEdit', isAuthenticated, (req, res) => {
+    citizen_editor.editMalmatta(req.params.id, req.body);
+    res.redirect('/citizen/' + req.params.id + '/malmatta');
+})
+
 router.get('/send_message', isAuthenticated, (req, res) => {
     if(req.user.messages <= 0) {
         res.redirect('/home')

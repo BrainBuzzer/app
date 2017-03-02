@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <% include ../_partials/head %>
+        <style>
+        .page-content {
+        padding-top: 3.125rem;
+        min-height: 100%;
+        height: 100%;
+        }
+        </style>
+        <link rel="stylesheet" href="/stylesheets/parsley.css">
+    </head>
+    <body class="bg-white">
+        <% include ../_partials/header%>
+        <div class="container page-content">
+            <div class="grid">
+                <br>
+                <form method="post" action="confirmEdit" id="form" data-parsley-validate>
+                    <input type="hidden" value="<%= body.mal_id %>" name="mal_id">
+                    <div class="row">
+                            <div class="input-control text full-size">
+                                <label for="name">भोगवटादाराचे नाव</label>
+                                <span class="mif-user prepend-icon"></span>
+                                <input type="text" required name="name" id="name" data-parsley-required="true" value="<%= malmatta.payee_name %>">
+                            </div>
+                    </div>
+                    <div class="row cells2">
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="home_number">मिळकत क्रमांक</label>
+                                <span class="prepend-icon mif-users"></span>
+                                <input type="text" required name="home_number" id="home_number" data-parsley-required="true" value="<%= malmatta.home_number %>">
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="malmatta_no">मालमत्ता क्रमांक</label>
+                                <span class="prepend-icon mif-phone"></span>
+                                <input type="text" required name="malmatta_no" id="malmatta_no"  data-parsley-trigger="change" value="<%= malmatta.malmatta_number %>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row cells">
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <label for="ward_name">वार्डचे नाव</label>
+                                <span class="prepend-icon mif-home"></span>
+                                <input type="text" required name="ward_name" id="ward_name" data-parsley-required="true" value="<%= malmatta.ward_name %>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row cells3">
+                        <div class="cell"></div>
+                        <div class="cell">
+                            <div class="form-actions">
+                                <button type="submit" class="button primary full-size">संपादित करा</button>
+                            </div>
+                        </div>
+                        <div class="cell"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <% include ../_partials/footer%>
+        <script src="/javascripts/parsley.min.js"></script>
+    </body>
+</html>

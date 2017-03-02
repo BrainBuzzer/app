@@ -22,6 +22,26 @@
                     </div>
                     <div class="cell"></div>
                 </div>
+                <form method="post" action="malmattaEdit">
+                    <div class="row cells2">
+                        <div class="cell">
+                            <div class="input-control text full-size">
+                                <% var count = 0 %>
+                                <label for="mal_id">मालमत्ता क्रमांक</label>
+                                <select name="mal_id">
+                                    <% citizen.malmatta.forEach(m => {%>
+                                        <option value="<%= count %>"><%= m.malmatta_number %></option>
+                                        <% count++ %>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cell">
+                            <div class="form-action full-size"></div>
+                            <button type="submit" class="primary button full-size">मालमत्तेत बदल करा</button>
+                        </div>
+                    </div>
+                </form>
                 <% if(citizen.malmatta.length > 1) {%>
                     <form method="post" onsubmit="if(!confirm('Is the form filled out correctly?')){return false;}" action="delete_m" id="delete_form">
                         <div class="row cells2">
