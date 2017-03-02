@@ -461,7 +461,7 @@ exports.editMalmatta = (id, body) => {
     Citizen.findOne({ _id: id }, (err, citizen) => {
         citizen.malmatta[body.mal_id].malmatta_number = body.malmatta_no;
         citizen.malmatta[body.mal_id].home_number = body.home_number;
-        citizen.malmatta[body.mal_id].payee_name = body.payee_name;
+        citizen.malmatta[body.mal_id].payee_name = body.name;
         citizen.malmatta[body.mal_id].ward_name = body.ward_name;
         citizen.save(err => {
             if(err) return handleError(err);
