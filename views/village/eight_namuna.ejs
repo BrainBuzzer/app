@@ -42,7 +42,7 @@
                 <tr>
                     <th>अ.क्र.</th>
                     <th class="rotate"><div><span>रस्त्याचे नाव</span></div></th>
-                    <th class="rotate"><div><span>सर्वे नंबर</span></div></th>
+                    <th class="rotate"><div><span>मिळकत क्रमांक</span></div></th>
                     <th class="rotate"><div><span>मालमत्ता क्रमांक</span></div></th>
                     <th class="rotate"><div><span>मालकाचे नाव</span></div></th>
                     <th class="rotate"><div><span>नवरा/बायकोचे नाव</span></div></th>
@@ -124,8 +124,8 @@
                 <tr>
                     <td><%= citizen.srno %></td>
                     <td class="rotate"><div><span><%= citizen.malmatta[n].ward_name %></span></div></td>
-                    <td><%= citizen.malmatta[n].survey_number %></td>
-                    <td><%= citizen.malmatta[n].malmatta_number %></td>
+                    <td class="rotate"><div><span><%= citizen.malmatta[n].home_number %></span></div></td>
+                    <td class="rotate"><div><span><%= citizen.malmatta[n].malmatta_number %></span></div></td>
                     <td class="rotate"><div><span><%= citizen.name %></span></div></td>
                     <td class="rotate"><div><span><%= citizen.wife_name %></span></div></td>
                     <td class="rotate"><div><span><%= citizen.malmatta[n].payee_name %></span></div></td>
