@@ -10,6 +10,9 @@
         </style>
         <link rel="stylesheet" href="/stylesheets/parsley.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
+        <script>
+            enableTyping(new Array('side_comment', 'payee_name', 'home_number', 'survey_number', 'east', 'west', 'south', 'north', 'comment'), null, 'ADDRESS', 'mar');
+        </script>
     </head>
     <body class="bg-white">
         <% include ../_partials/header%>
@@ -65,7 +68,7 @@
                         <div class="cell">
                             <div class="input-control textarea full-size" data-role="input" data-text-auto-resize="true" data-text-max-height="200">
                                 <label for="side_comment">बाजू शेरा</label>
-                                <textarea name="side_comment"></textarea>
+                                <textarea name="side_comment" id="side_comment"></textarea>
                             </div>
                         </div>
                     </div>
@@ -706,7 +709,7 @@
                     <div class="row">
                         <div class="input-control textarea full-size" data-role="input" data-text-auto-resize="true" data-text-max-height="200">
                             <label for="comment">शेरा</label>
-                            <textarea name="comment"></textarea>
+                            <textarea name="comment" id="comment"></textarea>
                         </div>
                     </div>
                     <div class="row cells3">
