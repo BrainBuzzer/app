@@ -7,6 +7,9 @@
                 height: 99%;    
             }
         }
+        .c {
+            display: block;
+        }
         .page-content {
             min-height: 100%;
             height: 100%;
@@ -26,16 +29,18 @@
             border-bottom: 1px solid #ccc;
             padding: 5px 10px;
         }
-
+        .sign {
+            margin-top: 50px;
+        }
         </style>
         <link rel="stylesheet" href="/stylesheets/print_eight.css" media="print">
 	</head>
 	<body>
 		<div class="page-content" id="print">
             <center>
-                <h3><b>नमुना ८</b></h3><br>
-                <h4>सन २०१६-२०१७ या वर्षासाठी कर आकारणी नोंदवही</h4><br>
-                <h4>ग्रामपंचायत: <%= user.village %>, तालुका: अंबाजोगाई</h4>
+                <span class="c"><h3><b>नमुना ८</b></h3></span>
+                <span class="c"><h4>सन २०१६-२०१७ या वर्षासाठी कर आकारणी नोंदवही</h4></span>
+                <span class="c"><h4>ग्रामपंचायत: <%= user.village %>, तालुका: अंबाजोगाई</h4></span>
             </center><br>
 
             <table border="1">
@@ -173,8 +178,8 @@
                     <td></td>
                     <td><%= citizen.malmatta[n].comment %></td>
                 </tr>
-            </table><br><br>
-            <div class="align-right">
+            </table>
+            <div class="sign align-right">
                 ग्रामसेवक स्वाक्षरी
             </div>
         </div>
