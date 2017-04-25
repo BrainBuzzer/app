@@ -55,6 +55,7 @@ exports.newCitizen = (id, body) => {
             malmatta.majla_second_area = body.second_floor_area;
         }
     }
+    malmatta.khulla_area_all = parseInt(body.khulla_area_all) * 0.09290304;
     malmatta.land_type = body.land_type;
     malmatta.ward_name = body.ward_type;
     malmatta.payee_name = body.payee_name;
@@ -212,6 +213,7 @@ exports.addMalmatta = (id, villageId, body) => {
         m_u.majla_tal_use = body.tal_use;
         m_u.majla_tal_year = body.tal_year;
         m_u.majla_tal_area = body.tal_area;
+        m_u.khulla_area_all = parseInt(body.khulla_area_all) * 0.09290304;
         if (body.first_floor_yes_no == 'yes') {
             m_u.majla_first_use = body.first_floor_use;
             m_u.majla_first_year = body.first_floor_year;

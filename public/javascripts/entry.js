@@ -18,6 +18,7 @@ var app = new Vue({
 		second_floor_yn: 'no',
 		name: '',
 		pupa: '1',
-		daut: '0'
+		daut: '0',
+		kh: '0'
 	}
 })

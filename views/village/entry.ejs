@@ -287,7 +287,7 @@
                             <div class="cell colspan4">
                                 <div class="input-control full-size text">
                                     <label for="tal_area">क्षेत्रफळ</label>
-                                    <input type="text" name="tal_area" id="tal_area" data-parsley-type="number" data-parsley-trigger="change" v-bind:value="pupa*daut">
+                                    <input type="text" name="tal_area" id="tal_area" data-parsley-type="number" data-parsley-trigger="change" v-bind:value="(pupa*daut)-kh">
                                 </div>
                             </div>
                         </div>
@@ -605,6 +605,14 @@
                         </div>
                     </div>
                     <hr class="thin"><br>
+                    <div class="row">
+                        <div class="cell">
+                            <div class="input-control full-size text">
+                                <label for="khulla_area_all">खुल्या जागेचे क्षेत्रफळ</label>
+                                <input type="text" name="khulla_area_all" v-model="kh" id="khulla_area_all" data-parsley-type="number" data-parsley-trigger="change" data-parsley-required="true">
+                            </div>
+                        </div>
+                    </div>
                     <div class="row cells2">
                         <div class="cell">
                             <div class="input-control full-size select">

@@ -24,6 +24,7 @@ module.exports = mongoose.model('Citizen', new Schema({
         majla_second_use: String,
         majla_second_year: String,
         majla_second_area: String,
+        khulla_area_all: {type: Number, default: 0},
         manora_khulla_area: String,
         manora_talghar_area: String,
         land_type: String,
