@@ -11,6 +11,7 @@ module.exports = mongoose.model('Citizen', new Schema({
     malmatta: [{
         pupa: String,
         dau: String,
+        trees: { type: Number, default: 0 },
         malmatta_number: String,
         malmatta_type: String,
         formula: String,

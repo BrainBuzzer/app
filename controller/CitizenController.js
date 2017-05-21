@@ -75,6 +75,7 @@ exports.newCitizen = (id, body) => {
     malmatta.current_panipatti = body.panipatti_type;
     malmatta.current_aarogya = body.aarogya_type;
     malmatta.current_veej = body.veej_type;
+    malmatta.trees = parseInt(body.trees);
     if (body.malmatta_type === 'a') {
         Upkar.findOne({
             villageId: id
@@ -213,6 +214,7 @@ exports.addMalmatta = (id, villageId, body) => {
         m_u.majla_tal_use = body.tal_use;
         m_u.majla_tal_year = body.tal_year;
         m_u.majla_tal_area = body.tal_area;
+        m_u.trees = parseInt(body.trees);
         m_u.khulla_area_all = parseInt(body.khulla_area_all) * 0.09290304;
         if (body.first_floor_yes_no == 'yes') {
             m_u.majla_first_use = body.first_floor_use;
@@ -465,6 +467,7 @@ exports.editMalmatta = (id, body) => {
         citizen.malmatta[body.mal_id].home_number = body.home_number;
         citizen.malmatta[body.mal_id].payee_name = body.name;
         citizen.malmatta[body.mal_id].ward_name = body.ward_name;
+        citizen.malmatta[body.mal_id].trees = parseInt(body.trees);
         citizen.save(err => {
             if(err) return handleError(err);
         })
